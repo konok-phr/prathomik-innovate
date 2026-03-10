@@ -26,6 +26,19 @@ const clients = [
 
 const doubled = [...clients, ...clients];
 
+const LogoCard = ({ client }: { client: (typeof clients)[0] }) => (
+  <div className="flex-shrink-0 glass-card flex items-center gap-4 px-6 py-4 hover:border-primary/30 transition-all duration-300 hover:glow-cyan group cursor-default min-w-[200px]">
+    <img
+      src={client.logo}
+      alt={client.name}
+      className="h-12 w-12 object-contain rounded-lg"
+    />
+    <span className="text-foreground font-semibold text-sm whitespace-nowrap">
+      {client.name}
+    </span>
+  </div>
+);
+
 const ClientLogosSection = () => {
   return (
     <section className="relative py-20 overflow-hidden">
@@ -46,44 +59,24 @@ const ClientLogosSection = () => {
         </h2>
       </motion.div>
 
-      {/* Marquee Row 1 */}
+      {/* Row 1 */}
       <div className="relative">
         <div className="absolute left-0 top-0 bottom-0 w-32 bg-gradient-to-r from-background to-transparent z-10" />
         <div className="absolute right-0 top-0 bottom-0 w-32 bg-gradient-to-l from-background to-transparent z-10" />
-
-        <div className="flex animate-marquee gap-8">
+        <div className="flex animate-marquee gap-6">
           {doubled.map((client, i) => (
-            <div
-              key={`row1-${i}`}
-              className="flex-shrink-0 glass-card flex items-center justify-center px-8 py-5 hover:border-primary/30 transition-all duration-300 hover:glow-cyan group cursor-default"
-            >
-              <img
-                src={client.logo}
-                alt={client.name}
-                className="h-10 w-auto object-contain opacity-70 group-hover:opacity-100 transition-opacity duration-300 dark:invert-0"
-              />
-            </div>
+            <LogoCard key={`row1-${i}`} client={client} />
           ))}
         </div>
       </div>
 
-      {/* Marquee Row 2 - reverse */}
+      {/* Row 2 - reverse */}
       <div className="relative mt-6">
         <div className="absolute left-0 top-0 bottom-0 w-32 bg-gradient-to-r from-background to-transparent z-10" />
         <div className="absolute right-0 top-0 bottom-0 w-32 bg-gradient-to-l from-background to-transparent z-10" />
-
-        <div className="flex animate-marquee-reverse gap-8">
+        <div className="flex animate-marquee-reverse gap-6">
           {[...doubled].reverse().map((client, i) => (
-            <div
-              key={`row2-${i}`}
-              className="flex-shrink-0 glass-card flex items-center justify-center px-8 py-5 hover:border-primary/30 transition-all duration-300 hover:glow-cyan group cursor-default"
-            >
-              <img
-                src={client.logo}
-                alt={client.name}
-                className="h-10 w-auto object-contain opacity-70 group-hover:opacity-100 transition-opacity duration-300 dark:invert-0"
-              />
-            </div>
+            <LogoCard key={`row2-${i}`} client={client} />
           ))}
         </div>
       </div>
