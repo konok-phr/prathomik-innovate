@@ -4,7 +4,7 @@ import { useState, useEffect } from "react";
 import { useLocation, useNavigate } from "react-router-dom";
 import { useTheme } from "./ThemeProvider";
 
-const navLinks = [
+const navLinks: { href: string; label: string; isPage?: boolean }[] = [
   { href: "#services", label: "Services" },
   { href: "#products", label: "Products" },
   { href: "#news", label: "News" },
