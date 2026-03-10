@@ -38,9 +38,9 @@ const products = [
 
 const ProductsSection = () => {
   return (
-    <section id="products" className="relative py-32">
+    <section id="products" className="relative py-20 sm:py-32">
       <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[600px] h-[600px] rounded-full bg-primary/3 blur-[150px]" />
-      <div className="container relative z-10 px-6">
+      <div className="container relative z-10 px-4 sm:px-6">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
