@@ -2,7 +2,7 @@ import { Mail, Phone } from "lucide-react";
 
 const TopBar = () => {
   return (
-    <div className="w-full bg-primary/10 border-b border-primary/20 py-2 z-[60] relative">
+    <div className="fixed top-0 left-0 right-0 bg-primary/10 border-b border-primary/20 py-2 z-[60]">
       <div className="container px-4 sm:px-6 flex items-center justify-center gap-4 sm:gap-8 text-xs sm:text-sm">
         <a
           href="https://wa.me/8801XXXXXXXXX"
