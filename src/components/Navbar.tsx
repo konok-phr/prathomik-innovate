@@ -157,7 +157,7 @@ const Navbar = () => {
               {navLinks.map((link) => (
                 <button
                   key={link.href}
-                  onClick={() => scrollTo(link.href)}
+                  onClick={() => handleNav(link.href, (link as any).isPage)}
                   className={`text-left text-sm py-2 transition-colors ${
                     activeSection === link.href.slice(1)
                       ? "text-primary font-medium"
