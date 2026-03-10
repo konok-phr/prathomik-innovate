@@ -64,9 +64,9 @@ const item = {
 
 const TeamSection = () => {
   return (
-    <section id="team" className="relative py-32 overflow-hidden">
+    <section id="team" className="relative py-20 overflow-hidden">
       <div className="absolute inset-0 dot-pattern opacity-30" />
-      <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[700px] h-[700px] rounded-full bg-primary/3 blur-[160px]" />
+      <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[500px] h-[500px] rounded-full bg-primary/3 blur-[160px]" />
 
       <div className="container relative z-10 px-6">
         <motion.div
