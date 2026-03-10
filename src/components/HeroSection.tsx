@@ -47,53 +47,41 @@ const HeroSection = () => {
   }, []);
 
   return (
-    <section className="relative min-h-screen flex items-center justify-center overflow-hidden">
+    <section className="relative min-h-screen flex items-center justify-center overflow-hidden pt-20 pb-10">
       <ParticleGrid />
 
       <div className="absolute top-1/4 left-1/4 w-[500px] h-[500px] rounded-full bg-primary/5 blur-[120px] animate-pulse-glow" />
       <div className="absolute bottom-1/4 right-1/4 w-[400px] h-[400px] rounded-full bg-cyan-glow/5 blur-[100px] animate-pulse-glow" style={{ animationDelay: "1.5s" }} />
 
       <motion.div
-        className="absolute top-20 right-[15%] w-16 h-16 border border-primary/20 rounded-lg rotate-45"
+        className="absolute top-20 right-[15%] w-16 h-16 border border-primary/20 rounded-lg rotate-45 hidden md:block"
         animate={{ y: [-10, 10, -10], rotate: [45, 50, 45] }}
         transition={{ duration: 6, repeat: Infinity, ease: "easeInOut" }}
       />
       <motion.div
-        className="absolute bottom-32 left-[10%] w-10 h-10 border border-primary/30 rounded-full"
+        className="absolute bottom-32 left-[10%] w-10 h-10 border border-primary/30 rounded-full hidden md:block"
         animate={{ y: [0, -20, 0] }}
         transition={{ duration: 5, repeat: Infinity, ease: "easeInOut", delay: 1 }}
       />
-      <motion.div
-        className="absolute top-1/3 right-[8%] w-20 h-20 border border-primary/10 rounded-full"
-        animate={{ scale: [1, 1.2, 1], opacity: [0.3, 0.6, 0.3] }}
-        transition={{ duration: 4, repeat: Infinity, ease: "easeInOut" }}
-      />
-      <motion.div
-        className="absolute bottom-1/4 right-[25%]"
-        animate={{ y: [0, -10, 0], rotate: [0, 180, 360] }}
-        transition={{ duration: 8, repeat: Infinity, ease: "linear" }}
-      >
-        <Terminal className="w-6 h-6 text-primary/20" />
-      </motion.div>
 
-      <div className="container relative z-10 px-6">
-        <div className="grid lg:grid-cols-2 gap-16 items-center">
-          <div>
+      <div className="container relative z-10 px-4 sm:px-6">
+        <div className="grid lg:grid-cols-2 gap-8 lg:gap-16 items-center">
+          <div className="text-center lg:text-left">
             <motion.div
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.6 }}
-              className="inline-flex items-center gap-2 px-4 py-2 rounded-full border border-primary/20 bg-primary/5 mb-8"
+              className="inline-flex items-center gap-2 px-4 py-2 rounded-full border border-primary/20 bg-primary/5 mb-6 md:mb-8"
             >
               <Sparkles className="w-4 h-4 text-primary" />
-              <span className="text-sm text-primary font-medium">Building the Future of Software</span>
+              <span className="text-xs sm:text-sm text-primary font-medium">Building the Future of Software</span>
             </motion.div>
 
             <motion.h1
               initial={{ opacity: 0, y: 30 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.7, delay: 0.1 }}
-              className="text-5xl md:text-7xl lg:text-7xl font-bold tracking-tight mb-6"
+              className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-bold tracking-tight mb-4 md:mb-6"
             >
               <span className="text-foreground">We Build</span>
               <br />
@@ -117,7 +105,7 @@ const HeroSection = () => {
               initial={{ opacity: 0, y: 30 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.7, delay: 0.2 }}
-              className="text-lg md:text-xl text-muted-foreground max-w-xl mb-10 leading-relaxed"
+              className="text-base sm:text-lg md:text-xl text-muted-foreground max-w-xl mb-8 md:mb-10 leading-relaxed mx-auto lg:mx-0"
             >
               Crafting intelligent software solutions — from custom web & mobile apps
               to AI/ML-powered systems. We transform ideas into scalable digital products.
@@ -127,18 +115,18 @@ const HeroSection = () => {
               initial={{ opacity: 0, y: 30 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.7, delay: 0.3 }}
-              className="flex flex-col sm:flex-row gap-4"
+              className="flex flex-col sm:flex-row gap-3 sm:gap-4 justify-center lg:justify-start"
             >
               <a
                 href="#products"
-                className="group inline-flex items-center gap-2 px-8 py-4 bg-gradient-cyan rounded-lg font-semibold text-primary-foreground transition-all hover:shadow-[var(--shadow-cyan-lg)] hover:scale-105"
+                className="group inline-flex items-center justify-center gap-2 px-6 sm:px-8 py-3 sm:py-4 bg-gradient-cyan rounded-lg font-semibold text-primary-foreground transition-all hover:shadow-[var(--shadow-cyan-lg)] hover:scale-105"
               >
                 Explore Our Products
                 <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
               </a>
               <a
                 href="#services"
-                className="inline-flex items-center gap-2 px-8 py-4 glass-card font-semibold text-foreground hover:border-primary/40 transition-all hover:scale-105"
+                className="inline-flex items-center justify-center gap-2 px-6 sm:px-8 py-3 sm:py-4 glass-card font-semibold text-foreground hover:border-primary/40 transition-all hover:scale-105"
               >
                 <Code2 className="w-4 h-4 text-primary" />
                 Our Services
@@ -156,34 +144,37 @@ const HeroSection = () => {
           </motion.div>
         </div>
 
-        {/* Tech stack with logos */}
+        {/* Tech stack with logos - bigger cards */}
         <motion.div
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           transition={{ delay: 1, duration: 1 }}
-          className="mt-20 flex items-center justify-center gap-6 flex-wrap"
+          className="mt-12 md:mt-20"
         >
-          {techStack.map((tech, i) => (
-            <motion.div
-              key={tech.name}
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ delay: 1.1 + i * 0.08 }}
-              whileHover={{ scale: 1.15, y: -4 }}
-              className="flex flex-col items-center gap-2 cursor-default group"
-            >
-              <div className="w-12 h-12 rounded-xl bg-card/80 border border-border/50 flex items-center justify-center group-hover:border-primary/40 group-hover:glow-cyan transition-all duration-300">
-                <img
-                  src={tech.logo}
-                  alt={tech.name}
-                  className="w-8 h-8 object-contain"
-                />
-              </div>
-              <span className="text-xs font-mono text-muted-foreground/60 group-hover:text-primary transition-colors">
-                {tech.name}
-              </span>
-            </motion.div>
-          ))}
+          <p className="text-center text-sm font-mono text-muted-foreground/60 mb-6 tracking-widest uppercase">Technologies We Use</p>
+          <div className="grid grid-cols-5 sm:grid-cols-5 md:grid-cols-10 gap-3 sm:gap-4 max-w-4xl mx-auto">
+            {techStack.map((tech, i) => (
+              <motion.div
+                key={tech.name}
+                initial={{ opacity: 0, y: 20 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ delay: 1.1 + i * 0.08 }}
+                whileHover={{ scale: 1.1, y: -4 }}
+                className="flex flex-col items-center gap-2 cursor-default group"
+              >
+                <div className="w-14 h-14 sm:w-16 sm:h-16 md:w-[72px] md:h-[72px] rounded-2xl bg-white flex items-center justify-center shadow-md group-hover:glow-cyan transition-all duration-300">
+                  <img
+                    src={tech.logo}
+                    alt={tech.name}
+                    className="w-9 h-9 sm:w-10 sm:h-10 md:w-12 md:h-12 object-contain"
+                  />
+                </div>
+                <span className="text-[10px] sm:text-xs font-mono text-muted-foreground/60 group-hover:text-primary transition-colors">
+                  {tech.name}
+                </span>
+              </motion.div>
+            ))}
+          </div>
         </motion.div>
       </div>
     </section>
