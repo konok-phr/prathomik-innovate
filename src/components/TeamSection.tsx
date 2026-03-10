@@ -64,9 +64,9 @@ const item = {
 
 const TeamSection = () => {
   return (
-    <section id="team" className="relative py-32 overflow-hidden">
+    <section id="team" className="relative py-20 overflow-hidden">
       <div className="absolute inset-0 dot-pattern opacity-30" />
-      <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[700px] h-[700px] rounded-full bg-primary/3 blur-[160px]" />
+      <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[500px] h-[500px] rounded-full bg-primary/3 blur-[160px]" />
 
       <div className="container relative z-10 px-6">
         <motion.div
@@ -74,7 +74,7 @@ const TeamSection = () => {
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.6 }}
-          className="text-center mb-20"
+          className="text-center mb-12"
         >
           <span className="text-primary font-mono text-sm tracking-widest uppercase">Our Team</span>
           <h2 className="text-4xl md:text-5xl font-bold mt-3 mb-4">
@@ -90,7 +90,7 @@ const TeamSection = () => {
           initial="hidden"
           whileInView="show"
           viewport={{ once: true, margin: "-50px" }}
-          className="grid sm:grid-cols-2 lg:grid-cols-3 gap-8"
+          className="grid sm:grid-cols-2 lg:grid-cols-3 gap-5"
         >
           {members.map((member) => (
             <motion.div
@@ -99,7 +99,7 @@ const TeamSection = () => {
               className="group glass-card overflow-hidden hover:border-primary/30 transition-all duration-500 hover:glow-cyan"
             >
               {/* Image container */}
-              <div className="relative h-64 overflow-hidden bg-gradient-cyan-soft">
+              <div className="relative h-48 overflow-hidden bg-gradient-cyan-soft">
                 <motion.img
                   src={member.image}
                   alt={member.name}
@@ -130,7 +130,7 @@ const TeamSection = () => {
               </div>
 
               {/* Info */}
-              <div className="p-6">
+              <div className="p-4">
                 <h3 className="text-lg font-bold text-foreground">{member.name}</h3>
                 <p className="text-primary text-sm font-medium mb-2">{member.role}</p>
                 <p className="text-muted-foreground text-sm leading-relaxed">{member.bio}</p>
