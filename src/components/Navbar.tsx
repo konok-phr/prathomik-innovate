@@ -46,7 +46,7 @@ const Navbar = () => {
       return;
     }
     if (!isHome) {
-      navigate("/" + href);
+      window.location.href = "/" + href;
       return;
     }
     const el = document.querySelector(href);
