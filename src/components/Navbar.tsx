@@ -168,7 +168,7 @@ const Navbar = () => {
                 </button>
               ))}
               <button
-                onClick={() => scrollTo("#contact")}
+                onClick={() => handleNav("#contact")}
                 className="mt-2 inline-flex items-center justify-center gap-2 px-5 py-3 bg-gradient-cyan rounded-lg text-sm font-semibold text-primary-foreground"
               >
                 Get in Touch
