@@ -51,7 +51,7 @@ const Navbar = () => {
           : "bg-transparent"
       }`}
     >
-      <div className="container px-6 flex items-center justify-between h-16">
+      <div className="container px-4 sm:px-6 flex items-center justify-between h-16">
         <a href="#" className="text-xl font-bold text-gradient-cyan">
           Prathomik
         </a>
@@ -140,7 +140,7 @@ const Navbar = () => {
             exit={{ opacity: 0, height: 0 }}
             className="md:hidden border-t border-border/50 bg-background/95 backdrop-blur-xl overflow-hidden"
           >
-            <div className="container px-6 py-4 flex flex-col gap-3">
+            <div className="container px-4 sm:px-6 py-4 flex flex-col gap-3">
               {navLinks.map((link) => (
                 <button
                   key={link.href}

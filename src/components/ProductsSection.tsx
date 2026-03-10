@@ -38,9 +38,9 @@ const products = [
 
 const ProductsSection = () => {
   return (
-    <section id="products" className="relative py-32">
+    <section id="products" className="relative py-20 sm:py-32">
       <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[600px] h-[600px] rounded-full bg-primary/3 blur-[150px]" />
-      <div className="container relative z-10 px-6">
+      <div className="container relative z-10 px-4 sm:px-6">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
@@ -64,7 +64,7 @@ const ProductsSection = () => {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ delay: i * 0.15, duration: 0.6 }}
-              className="group glass-card p-8 hover:border-primary/30 transition-all duration-500 hover:glow-cyan relative overflow-hidden"
+              className="group glass-card p-5 sm:p-8 hover:border-primary/30 transition-all duration-500 hover:glow-cyan relative overflow-hidden"
             >
               {/* Gradient accent line */}
               <div className={`absolute top-0 left-0 right-0 h-[2px] bg-gradient-to-r ${product.color} opacity-0 group-hover:opacity-100 transition-opacity duration-500`} />

@@ -33,10 +33,10 @@ const item = {
 
 const TeamSection = () => {
   return (
-    <section id="team" className="relative py-16 overflow-hidden">
+    <section id="team" className="relative py-16 sm:py-20 overflow-hidden">
       <div className="absolute inset-0 dot-pattern opacity-20" />
 
-      <div className="container relative z-10 px-6">
+      <div className="container relative z-10 px-4 sm:px-6">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
