@@ -4,13 +4,13 @@ import { useState, useEffect } from "react";
 import { useLocation, useNavigate } from "react-router-dom";
 import { useTheme } from "./ThemeProvider";
 
-const navLinks = [
+const navLinks: { href: string; label: string; isPage?: boolean }[] = [
   { href: "#services", label: "Services" },
   { href: "#products", label: "Products" },
   { href: "#news", label: "News" },
   { href: "#open-source", label: "Open Source" },
   { href: "#testimonials", label: "Testimonials" },
-  { href: "#careers", label: "Careers" },
+  { href: "/careers", label: "Careers", isPage: true },
 ];
 
 const Navbar = () => {
@@ -39,8 +39,12 @@ const Navbar = () => {
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
-  const scrollTo = (href: string) => {
+  const handleNav = (href: string, isPage?: boolean) => {
     setMobileOpen(false);
+    if (isPage) {
+      navigate(href);
+      return;
+    }
     if (!isHome) {
       navigate("/" + href);
       return;
@@ -70,7 +74,7 @@ const Navbar = () => {
           {navLinks.map((link) => (
             <button
               key={link.href}
-              onClick={() => scrollTo(link.href)}
+              onClick={() => handleNav(link.href, link.isPage)}
               className={`relative transition-colors py-1 ${
                 activeSection === link.href.slice(1)
                   ? "text-primary font-medium"
@@ -110,7 +114,7 @@ const Navbar = () => {
           </button>
 
           <button
-            onClick={() => scrollTo("#contact")}
+            onClick={() => handleNav("#contact")}
             className="inline-flex items-center gap-2 px-5 py-2 bg-gradient-cyan rounded-lg text-sm font-semibold text-primary-foreground hover:shadow-[var(--shadow-cyan)] transition-all hover:scale-105"
           >
             Get in Touch
@@ -153,7 +157,7 @@ const Navbar = () => {
               {navLinks.map((link) => (
                 <button
                   key={link.href}
-                  onClick={() => scrollTo(link.href)}
+                  onClick={() => handleNav(link.href, link.isPage)}
                   className={`text-left text-sm py-2 transition-colors ${
                     activeSection === link.href.slice(1)
                       ? "text-primary font-medium"
@@ -164,7 +168,7 @@ const Navbar = () => {
                 </button>
               ))}
               <button
-                onClick={() => scrollTo("#contact")}
+                onClick={() => handleNav("#contact")}
                 className="mt-2 inline-flex items-center justify-center gap-2 px-5 py-3 bg-gradient-cyan rounded-lg text-sm font-semibold text-primary-foreground"
               >
                 Get in Touch

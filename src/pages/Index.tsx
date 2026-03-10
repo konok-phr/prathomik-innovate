@@ -10,7 +10,6 @@ import ClientLogosSection from "@/components/ClientLogosSection";
 import OpenSourceSection from "@/components/OpenSourceSection";
 import TestimonialsSection from "@/components/TestimonialsSection";
 import NewsSection from "@/components/NewsSection";
-import CareersSection from "@/components/CareersSection";
 import ContactSection from "@/components/ContactSection";
 import Footer from "@/components/Footer";
 
@@ -29,7 +28,6 @@ const Index = () => {
       <OpenSourceSection />
       <TestimonialsSection />
       <NewsSection />
-      <CareersSection />
       <ContactSection />
       <Footer />
     </div>
