@@ -3,9 +3,9 @@ import { Workflow, Layers, Zap } from "lucide-react";
 
 const TechShowcase = () => {
   return (
-    <section className="relative py-24 overflow-hidden">
-      <div className="container relative z-10 px-6">
-        <div className="grid md:grid-cols-3 gap-8">
+    <section className="relative py-16 sm:py-24 overflow-hidden">
+      <div className="container relative z-10 px-4 sm:px-6">
+        <div className="grid sm:grid-cols-2 md:grid-cols-3 gap-6 sm:gap-8">
           {[
             {
               icon: Workflow,

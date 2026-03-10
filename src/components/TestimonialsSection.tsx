@@ -26,9 +26,9 @@ const testimonials = [
 
 const TestimonialsSection = () => {
   return (
-    <section id="testimonials" className="relative py-32">
+    <section id="testimonials" className="relative py-20 sm:py-32">
       <div className="absolute bottom-0 right-0 w-[400px] h-[400px] rounded-full bg-primary/3 blur-[120px]" />
-      <div className="container relative z-10 px-6">
+      <div className="container relative z-10 px-4 sm:px-6">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}

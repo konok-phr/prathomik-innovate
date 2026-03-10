@@ -36,7 +36,7 @@ const CareersSection = () => {
               whileInView={{ opacity: 1, x: 0 }}
               viewport={{ once: true }}
               transition={{ delay: i * 0.1, duration: 0.4 }}
-              className="group glass-card p-6 flex items-center justify-between hover:border-primary/30 transition-all duration-300 cursor-pointer"
+              className="group glass-card p-4 sm:p-6 flex items-center justify-between hover:border-primary/30 transition-all duration-300 cursor-pointer"
             >
               <div className="flex items-center gap-4">
                 <div className="w-10 h-10 rounded-lg bg-gradient-cyan-soft flex items-center justify-center">

@@ -64,7 +64,7 @@ const ProductsSection = () => {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ delay: i * 0.15, duration: 0.6 }}
-              className="group glass-card p-8 hover:border-primary/30 transition-all duration-500 hover:glow-cyan relative overflow-hidden"
+              className="group glass-card p-5 sm:p-8 hover:border-primary/30 transition-all duration-500 hover:glow-cyan relative overflow-hidden"
             >
               {/* Gradient accent line */}
               <div className={`absolute top-0 left-0 right-0 h-[2px] bg-gradient-to-r ${product.color} opacity-0 group-hover:opacity-100 transition-opacity duration-500`} />
