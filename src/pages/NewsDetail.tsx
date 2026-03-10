@@ -2,6 +2,7 @@ import { motion } from "framer-motion";
 import { ArrowLeft, Calendar, Tag } from "lucide-react";
 import { useParams, Link, Navigate } from "react-router-dom";
 import { useEffect } from "react";
+import TopBar from "@/components/TopBar";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 import { newsItems } from "@/data/news";
@@ -18,6 +19,7 @@ const NewsDetail = () => {
 
   return (
     <div className="min-h-screen bg-background">
+      <TopBar />
       <Navbar />
 
       <article className="relative pt-28 pb-20 sm:pt-32">

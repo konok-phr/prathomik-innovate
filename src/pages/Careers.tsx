@@ -1,5 +1,6 @@
 import { motion } from "framer-motion";
 import { Briefcase, ArrowRight, MapPin, Clock, Users, Heart, Zap, Globe, GraduationCap } from "lucide-react";
+import TopBar from "@/components/TopBar";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 
@@ -34,6 +35,7 @@ const itemVariants = {
 const Careers = () => {
   return (
     <div className="min-h-screen bg-background">
+      <TopBar />
       <Navbar />
 
       {/* Hero */}
