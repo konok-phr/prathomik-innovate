@@ -1,19 +1,58 @@
-import { motion } from "framer-motion";
+import { motion, AnimatePresence } from "framer-motion";
 import { ArrowRight, Code2, Sparkles, Terminal } from "lucide-react";
+import { useState, useEffect } from "react";
 import ParticleGrid from "./ParticleGrid";
 import CodeTerminal from "./CodeTerminal";
 
+import techReact from "@/assets/tech-react.png";
+import techPhp from "@/assets/tech-php.png";
+import techLaravel from "@/assets/tech-laravel.png";
+import techFlutter from "@/assets/tech-flutter.png";
+import techPython from "@/assets/tech-python.png";
+import techTensorflow from "@/assets/tech-tensorflow.png";
+import techAws from "@/assets/tech-aws.png";
+import techDocker from "@/assets/tech-docker.png";
+import techNextjs from "@/assets/tech-nextjs.png";
+import techTypescript from "@/assets/tech-typescript.png";
+
+const techStack = [
+  { name: "React", logo: techReact },
+  { name: "PHP", logo: techPhp },
+  { name: "Laravel", logo: techLaravel },
+  { name: "Flutter", logo: techFlutter },
+  { name: "Python", logo: techPython },
+  { name: "TensorFlow", logo: techTensorflow },
+  { name: "AWS", logo: techAws },
+  { name: "Docker", logo: techDocker },
+  { name: "Next.js", logo: techNextjs },
+  { name: "TypeScript", logo: techTypescript },
+];
+
+const heroTexts = [
+  "Custom Software",
+  "AI/ML Solutions",
+  "Mobile Apps",
+  "Cloud Architecture",
+  "Web Platforms",
+];
+
 const HeroSection = () => {
+  const [textIndex, setTextIndex] = useState(0);
+
+  useEffect(() => {
+    const interval = setInterval(() => {
+      setTextIndex((prev) => (prev + 1) % heroTexts.length);
+    }, 3000);
+    return () => clearInterval(interval);
+  }, []);
+
   return (
     <section className="relative min-h-screen flex items-center justify-center overflow-hidden">
-      {/* Interactive particle grid */}
       <ParticleGrid />
 
-      {/* Gradient orbs */}
       <div className="absolute top-1/4 left-1/4 w-[500px] h-[500px] rounded-full bg-primary/5 blur-[120px] animate-pulse-glow" />
       <div className="absolute bottom-1/4 right-1/4 w-[400px] h-[400px] rounded-full bg-cyan-glow/5 blur-[100px] animate-pulse-glow" style={{ animationDelay: "1.5s" }} />
 
-      {/* Floating geometric elements */}
       <motion.div
         className="absolute top-20 right-[15%] w-16 h-16 border border-primary/20 rounded-lg rotate-45"
         animate={{ y: [-10, 10, -10], rotate: [45, 50, 45] }}
@@ -39,7 +78,6 @@ const HeroSection = () => {
 
       <div className="container relative z-10 px-6">
         <div className="grid lg:grid-cols-2 gap-16 items-center">
-          {/* Left — text */}
           <div>
             <motion.div
               initial={{ opacity: 0, y: 20 }}
@@ -57,9 +95,22 @@ const HeroSection = () => {
               transition={{ duration: 0.7, delay: 0.1 }}
               className="text-5xl md:text-7xl lg:text-7xl font-bold tracking-tight mb-6"
             >
-              <span className="text-foreground">We are</span>
+              <span className="text-foreground">We Build</span>
               <br />
-              <span className="text-gradient-cyan">Prathomik</span>
+              <span className="h-[1.2em] block overflow-hidden">
+                <AnimatePresence mode="wait">
+                  <motion.span
+                    key={textIndex}
+                    initial={{ y: 60, opacity: 0 }}
+                    animate={{ y: 0, opacity: 1 }}
+                    exit={{ y: -60, opacity: 0 }}
+                    transition={{ duration: 0.5, ease: "easeInOut" }}
+                    className="text-gradient-cyan block"
+                  >
+                    {heroTexts[textIndex]}
+                  </motion.span>
+                </AnimatePresence>
+              </span>
             </motion.h1>
 
             <motion.p
@@ -95,7 +146,6 @@ const HeroSection = () => {
             </motion.div>
           </div>
 
-          {/* Right — code terminal */}
           <motion.div
             initial={{ opacity: 0, x: 40 }}
             animate={{ opacity: 1, x: 0 }}
@@ -106,21 +156,33 @@ const HeroSection = () => {
           </motion.div>
         </div>
 
-        {/* Tech stack ticker */}
+        {/* Tech stack with logos */}
         <motion.div
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           transition={{ delay: 1, duration: 1 }}
-          className="mt-20 flex items-center justify-center gap-8 flex-wrap text-muted-foreground/50 text-sm font-mono"
+          className="mt-20 flex items-center justify-center gap-6 flex-wrap"
         >
-          {["React", "Laravel", "Flutter", "Python", "TensorFlow", "AWS", "Docker", "Next.js", "PostgreSQL", "TypeScript"].map((tech) => (
-            <motion.span
-              key={tech}
-              whileHover={{ scale: 1.1, color: "hsl(185, 80%, 50%)" }}
-              className="hover:text-primary transition-colors cursor-default"
+          {techStack.map((tech, i) => (
+            <motion.div
+              key={tech.name}
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ delay: 1.1 + i * 0.08 }}
+              whileHover={{ scale: 1.15, y: -4 }}
+              className="flex flex-col items-center gap-2 cursor-default group"
             >
-              {tech}
-            </motion.span>
+              <div className="w-12 h-12 rounded-xl bg-card/80 border border-border/50 flex items-center justify-center group-hover:border-primary/40 group-hover:glow-cyan transition-all duration-300">
+                <img
+                  src={tech.logo}
+                  alt={tech.name}
+                  className="w-8 h-8 object-contain"
+                />
+              </div>
+              <span className="text-xs font-mono text-muted-foreground/60 group-hover:text-primary transition-colors">
+                {tech.name}
+              </span>
+            </motion.div>
           ))}
         </motion.div>
       </div>
