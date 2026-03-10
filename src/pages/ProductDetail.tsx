@@ -2,6 +2,7 @@ import { motion } from "framer-motion";
 import { ArrowLeft, ArrowRight, ExternalLink, Check } from "lucide-react";
 import { useParams, Link, Navigate } from "react-router-dom";
 import { useEffect } from "react";
+import TopBar from "@/components/TopBar";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 import { products } from "@/data/products";
