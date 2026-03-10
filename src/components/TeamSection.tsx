@@ -130,7 +130,7 @@ const TeamSection = () => {
               </div>
 
               {/* Info */}
-              <div className="p-6">
+              <div className="p-4">
                 <h3 className="text-lg font-bold text-foreground">{member.name}</h3>
                 <p className="text-primary text-sm font-medium mb-2">{member.role}</p>
                 <p className="text-muted-foreground text-sm leading-relaxed">{member.bio}</p>
