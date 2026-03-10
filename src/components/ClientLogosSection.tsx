@@ -27,12 +27,14 @@ const clients = [
 const doubled = [...clients, ...clients];
 
 const LogoCard = ({ client }: { client: (typeof clients)[0] }) => (
-  <div className="flex-shrink-0 glass-card flex items-center gap-4 px-6 py-4 hover:border-primary/30 transition-all duration-300 hover:glow-cyan group cursor-default min-w-[200px]">
-    <img
-      src={client.logo}
-      alt={client.name}
-      className="h-12 w-12 object-contain rounded-lg"
-    />
+  <div className="flex-shrink-0 glass-card flex items-center gap-4 px-5 py-3 hover:border-primary/30 transition-all duration-300 hover:glow-cyan group cursor-default min-w-[220px]">
+    <div className="w-14 h-14 rounded-xl bg-white flex items-center justify-center flex-shrink-0 shadow-sm">
+      <img
+        src={client.logo}
+        alt={client.name}
+        className="w-10 h-10 object-contain"
+      />
+    </div>
     <span className="text-foreground font-semibold text-sm whitespace-nowrap">
       {client.name}
     </span>
