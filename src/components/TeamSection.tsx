@@ -99,7 +99,7 @@ const TeamSection = () => {
               className="group glass-card overflow-hidden hover:border-primary/30 transition-all duration-500 hover:glow-cyan"
             >
               {/* Image container */}
-              <div className="relative h-64 overflow-hidden bg-gradient-cyan-soft">
+              <div className="relative h-48 overflow-hidden bg-gradient-cyan-soft">
                 <motion.img
                   src={member.image}
                   alt={member.name}
