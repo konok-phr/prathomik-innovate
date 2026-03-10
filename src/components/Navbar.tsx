@@ -39,8 +39,12 @@ const Navbar = () => {
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
-  const scrollTo = (href: string) => {
+  const handleNav = (href: string, isPage?: boolean) => {
     setMobileOpen(false);
+    if (isPage) {
+      navigate(href);
+      return;
+    }
     if (!isHome) {
       navigate("/" + href);
       return;
