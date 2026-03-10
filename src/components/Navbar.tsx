@@ -10,7 +10,7 @@ const navLinks = [
   { href: "#news", label: "News" },
   { href: "#open-source", label: "Open Source" },
   { href: "#testimonials", label: "Testimonials" },
-  { href: "#careers", label: "Careers" },
+  { href: "/careers", label: "Careers", isPage: true },
 ];
 
 const Navbar = () => {
