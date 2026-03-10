@@ -60,9 +60,9 @@ const Navbar = () => {
           : "bg-transparent"
       }`}
     >
-      <div className="container px-4 sm:px-6 flex items-center justify-between h-16">
-        <a href="#" className="text-xl font-bold text-gradient-cyan">
-          Prathomik
+        <div className="container px-4 sm:px-6 flex items-center justify-between h-16">
+          <a href="/" className="text-xl font-bold text-gradient-cyan">
+            Prathomik
         </a>
 
         {/* Desktop links */}
