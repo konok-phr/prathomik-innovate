@@ -1,16 +1,27 @@
 import { motion } from "framer-motion";
 
+import logoTechvista from "@/assets/client-techvista.png";
+import logoCloudsync from "@/assets/client-cloudsync.png";
+import logoDatapulse from "@/assets/client-datapulse.png";
+import logoNexaflow from "@/assets/client-nexaflow.png";
+import logoCyberedge from "@/assets/client-cyberedge.png";
+import logoQuantumai from "@/assets/client-quantumai.png";
+import logoSwiftpay from "@/assets/client-swiftpay.png";
+import logoGreenbyte from "@/assets/client-greenbyte.png";
+import logoPixelforge from "@/assets/client-pixelforge.png";
+import logoOrbitlabs from "@/assets/client-orbitlabs.png";
+
 const clients = [
-  { name: "TechVista", icon: "⚡" },
-  { name: "CloudSync", icon: "☁️" },
-  { name: "DataPulse", icon: "📊" },
-  { name: "NexaFlow", icon: "🔄" },
-  { name: "CyberEdge", icon: "🛡️" },
-  { name: "QuantumAI", icon: "🧠" },
-  { name: "SwiftPay", icon: "💳" },
-  { name: "GreenByte", icon: "🌿" },
-  { name: "PixelForge", icon: "🎨" },
-  { name: "OrbitLabs", icon: "🚀" },
+  { name: "TechVista", logo: logoTechvista },
+  { name: "CloudSync", logo: logoCloudsync },
+  { name: "DataPulse", logo: logoDatapulse },
+  { name: "NexaFlow", logo: logoNexaflow },
+  { name: "CyberEdge", logo: logoCyberedge },
+  { name: "QuantumAI", logo: logoQuantumai },
+  { name: "SwiftPay", logo: logoSwiftpay },
+  { name: "GreenByte", logo: logoGreenbyte },
+  { name: "PixelForge", logo: logoPixelforge },
+  { name: "OrbitLabs", logo: logoOrbitlabs },
 ];
 
 const doubled = [...clients, ...clients];
@@ -40,18 +51,17 @@ const ClientLogosSection = () => {
         <div className="absolute left-0 top-0 bottom-0 w-32 bg-gradient-to-r from-background to-transparent z-10" />
         <div className="absolute right-0 top-0 bottom-0 w-32 bg-gradient-to-l from-background to-transparent z-10" />
 
-        <div className="flex animate-marquee gap-6">
+        <div className="flex animate-marquee gap-8">
           {doubled.map((client, i) => (
             <div
               key={`row1-${i}`}
-              className="flex-shrink-0 glass-card flex items-center gap-3 px-8 py-4 hover:border-primary/30 transition-all duration-300 hover:glow-cyan group cursor-default"
+              className="flex-shrink-0 glass-card flex items-center justify-center px-8 py-5 hover:border-primary/30 transition-all duration-300 hover:glow-cyan group cursor-default"
             >
-              <span className="text-2xl group-hover:scale-110 transition-transform duration-300">
-                {client.icon}
-              </span>
-              <span className="text-foreground font-semibold text-sm whitespace-nowrap">
-                {client.name}
-              </span>
+              <img
+                src={client.logo}
+                alt={client.name}
+                className="h-10 w-auto object-contain opacity-70 group-hover:opacity-100 transition-opacity duration-300 dark:invert-0"
+              />
             </div>
           ))}
         </div>
@@ -62,18 +72,17 @@ const ClientLogosSection = () => {
         <div className="absolute left-0 top-0 bottom-0 w-32 bg-gradient-to-r from-background to-transparent z-10" />
         <div className="absolute right-0 top-0 bottom-0 w-32 bg-gradient-to-l from-background to-transparent z-10" />
 
-        <div className="flex animate-marquee-reverse gap-6">
+        <div className="flex animate-marquee-reverse gap-8">
           {[...doubled].reverse().map((client, i) => (
             <div
               key={`row2-${i}`}
-              className="flex-shrink-0 glass-card flex items-center gap-3 px-8 py-4 hover:border-primary/30 transition-all duration-300 hover:glow-cyan group cursor-default"
+              className="flex-shrink-0 glass-card flex items-center justify-center px-8 py-5 hover:border-primary/30 transition-all duration-300 hover:glow-cyan group cursor-default"
             >
-              <span className="text-2xl group-hover:scale-110 transition-transform duration-300">
-                {client.icon}
-              </span>
-              <span className="text-foreground font-semibold text-sm whitespace-nowrap">
-                {client.name}
-              </span>
+              <img
+                src={client.logo}
+                alt={client.name}
+                className="h-10 w-auto object-contain opacity-70 group-hover:opacity-100 transition-opacity duration-300 dark:invert-0"
+              />
             </div>
           ))}
         </div>
