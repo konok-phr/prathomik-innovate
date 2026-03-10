@@ -1,11 +1,13 @@
 import { motion, AnimatePresence } from "framer-motion";
 import { ArrowRight, Menu, X, Sun, Moon } from "lucide-react";
 import { useState, useEffect } from "react";
+import { useLocation, useNavigate } from "react-router-dom";
 import { useTheme } from "./ThemeProvider";
 
 const navLinks = [
   { href: "#services", label: "Services" },
   { href: "#products", label: "Products" },
+  { href: "#news", label: "News" },
   { href: "#open-source", label: "Open Source" },
   { href: "#testimonials", label: "Testimonials" },
   { href: "#careers", label: "Careers" },
@@ -16,6 +18,9 @@ const Navbar = () => {
   const [mobileOpen, setMobileOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
   const { theme, toggle } = useTheme();
+  const location = useLocation();
+  const navigate = useNavigate();
+  const isHome = location.pathname === "/";
 
   useEffect(() => {
     const handleScroll = () => {
@@ -36,6 +41,10 @@ const Navbar = () => {
 
   const scrollTo = (href: string) => {
     setMobileOpen(false);
+    if (!isHome) {
+      navigate("/" + href);
+      return;
+    }
     const el = document.querySelector(href);
     el?.scrollIntoView({ behavior: "smooth" });
   };
@@ -51,9 +60,9 @@ const Navbar = () => {
           : "bg-transparent"
       }`}
     >
-      <div className="container px-4 sm:px-6 flex items-center justify-between h-16">
-        <a href="#" className="text-xl font-bold text-gradient-cyan">
-          Prathomik
+        <div className="container px-4 sm:px-6 flex items-center justify-between h-16">
+          <a href="/" className="text-xl font-bold text-gradient-cyan">
+            Prathomik
         </a>
 
         {/* Desktop links */}
