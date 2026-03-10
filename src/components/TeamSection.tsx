@@ -74,7 +74,7 @@ const TeamSection = () => {
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.6 }}
-          className="text-center mb-20"
+          className="text-center mb-12"
         >
           <span className="text-primary font-mono text-sm tracking-widest uppercase">Our Team</span>
           <h2 className="text-4xl md:text-5xl font-bold mt-3 mb-4">
