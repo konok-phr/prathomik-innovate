@@ -46,7 +46,7 @@ const Navbar = () => {
       return;
     }
     if (!isHome) {
-      navigate("/" + href);
+      window.location.href = "/" + href;
       return;
     }
     const el = document.querySelector(href);
@@ -58,7 +58,7 @@ const Navbar = () => {
       initial={{ opacity: 0, y: -20 }}
       animate={{ opacity: 1, y: 0 }}
       transition={{ duration: 0.5 }}
-      className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
+      className={`fixed top-[36px] left-0 right-0 z-50 transition-all duration-300 ${
         scrolled
           ? "border-b border-border/50 bg-background/80 backdrop-blur-xl shadow-lg shadow-background/20"
           : "bg-transparent"

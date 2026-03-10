@@ -14,9 +14,9 @@ const Footer = () => {
           <div>
             <h4 className="font-semibold text-foreground mb-4">Quick Links</h4>
             <div className="space-y-2 text-sm text-muted-foreground">
-              <a href="#services" className="block hover:text-primary transition-colors">Services</a>
-              <a href="#products" className="block hover:text-primary transition-colors">Products</a>
-              <a href="#open-source" className="block hover:text-primary transition-colors">Open Source</a>
+              <a href="/#services" className="block hover:text-primary transition-colors">Services</a>
+              <a href="/#products" className="block hover:text-primary transition-colors">Products</a>
+              <a href="/#open-source" className="block hover:text-primary transition-colors">Open Source</a>
               <a href="/careers" className="block hover:text-primary transition-colors">Careers</a>
             </div>
           </div>
