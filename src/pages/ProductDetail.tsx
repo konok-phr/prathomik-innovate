@@ -23,6 +23,7 @@ const ProductDetail = () => {
 
   return (
     <div className="min-h-screen bg-background">
+      <TopBar />
       <Navbar />
 
       {/* Hero */}

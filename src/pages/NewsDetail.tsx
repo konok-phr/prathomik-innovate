@@ -19,6 +19,7 @@ const NewsDetail = () => {
 
   return (
     <div className="min-h-screen bg-background">
+      <TopBar />
       <Navbar />
 
       <article className="relative pt-28 pb-20 sm:pt-32">
