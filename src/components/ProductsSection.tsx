@@ -1,6 +1,6 @@
 import { motion } from "framer-motion";
 import { ArrowUpRight } from "lucide-react";
-import { Link } from "react-router-dom";
+import PrefetchLink from "./PrefetchLink";
 import { products } from "@/data/products";
 import FloatingGraphics from "./FloatingGraphics";
 

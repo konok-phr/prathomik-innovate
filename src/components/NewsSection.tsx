@@ -1,6 +1,6 @@
 import { motion } from "framer-motion";
 import { ArrowRight, Calendar } from "lucide-react";
-import { Link } from "react-router-dom";
+import PrefetchLink from "./PrefetchLink";
 import { newsItems } from "@/data/news";
 
 const categoryColors: Record<string, string> = {
