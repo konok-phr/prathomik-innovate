@@ -3,6 +3,7 @@ import { ArrowRight, Menu, X, Sun, Moon } from "lucide-react";
 import { useState, useEffect } from "react";
 import { useLocation, useNavigate } from "react-router-dom";
 import { useTheme } from "./ThemeProvider";
+import prathomikLogo from "@/assets/prathomik-logo.png";
 
 const navLinks: { href: string; label: string; isPage?: boolean }[] = [
   { href: "#services", label: "Services" },
