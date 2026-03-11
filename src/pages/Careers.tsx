@@ -36,7 +36,9 @@ const itemVariants = {
 
 const Careers = () => {
   return (
+    <PageTransition>
     <div className="min-h-screen bg-background">
+      <SEOHead title="Careers" description="Join the Prathomik team — explore open positions in engineering, design, AI/ML, and more." path="/careers" />
       <TopBar />
       <Navbar />
 
