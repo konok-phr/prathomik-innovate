@@ -3,6 +3,7 @@ import { ArrowRight, Code2, Sparkles, ChevronDown } from "lucide-react";
 import { useState, useEffect } from "react";
 import ParticleGrid from "./ParticleGrid";
 import CodeTerminal from "./CodeTerminal";
+import { useTheme } from "./ThemeProvider";
 
 import techReact from "@/assets/tech-react.png";
 import techPhp from "@/assets/tech-php.png";
@@ -56,6 +57,7 @@ const itemVariants = {
 
 const HeroSection = () => {
   const [textIndex, setTextIndex] = useState(0);
+  const { theme } = useTheme();
 
   useEffect(() => {
     const interval = setInterval(() => {
@@ -66,6 +68,15 @@ const HeroSection = () => {
 
   return (
     <section className="relative min-h-screen flex items-center justify-center overflow-hidden pt-24">
+      {/* Light theme mesh gradient background */}
+      {theme === "light" && (
+        <>
+          <div className="absolute inset-0 bg-[radial-gradient(ellipse_80%_50%_at_50%_-20%,hsl(185_85%_35%/0.12),transparent)]" />
+          <div className="absolute inset-0 bg-[radial-gradient(ellipse_60%_40%_at_80%_60%,hsl(200_80%_60%/0.08),transparent)]" />
+          <div className="absolute inset-0 bg-[radial-gradient(ellipse_50%_50%_at_20%_80%,hsl(170_70%_50%/0.06),transparent)]" />
+          <div className="absolute top-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-primary/20 to-transparent" />
+        </>
+      )}
       <ParticleGrid />
 
       {/* Ambient glow orbs */}
