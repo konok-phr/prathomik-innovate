@@ -1,5 +1,5 @@
 import { motion } from "framer-motion";
-import { ArrowRight, Calendar, Tag } from "lucide-react";
+import { ArrowRight, Calendar } from "lucide-react";
 import { Link } from "react-router-dom";
 import { newsItems } from "@/data/news";
 
@@ -13,12 +13,10 @@ const categoryColors: Record<string, string> = {
 };
 
 const NewsSection = () => {
-  const displayNews = newsItems.slice(0, 6);
+  const displayNews = newsItems.slice(0, 3);
 
   return (
     <section id="news" className="relative py-20 sm:py-32 overflow-hidden">
-      <div className="absolute inset-0 grid-pattern opacity-20" />
-
       <div className="container relative z-10 px-4 sm:px-6">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
@@ -47,12 +45,13 @@ const NewsSection = () => {
             >
               <Link
                 to={`/news/${item.slug}`}
-                className="group glass-card overflow-hidden flex flex-col h-full hover:border-primary/30 transition-all duration-300 hover:glow-cyan"
+                className="group glass-card overflow-hidden flex flex-col h-full hover:border-primary/30 transition-all duration-300"
               >
-                <div className="relative h-48 overflow-hidden">
+                <div className="relative h-44 sm:h-48 overflow-hidden">
                   <img
                     src={item.image}
                     alt={item.title}
+                    loading="lazy"
                     className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
                   />
                   <div className="absolute inset-0 bg-gradient-to-t from-background/80 to-transparent" />
@@ -63,18 +62,18 @@ const NewsSection = () => {
                   </div>
                 </div>
 
-                <div className="p-5 flex flex-col flex-1">
-                  <div className="flex items-center gap-2 text-xs text-muted-foreground mb-3">
+                <div className="p-4 sm:p-5 flex flex-col flex-1">
+                  <div className="flex items-center gap-2 text-xs text-muted-foreground mb-2">
                     <Calendar className="w-3 h-3" />
-                    {new Date(item.date).toLocaleDateString("en-US", { year: "numeric", month: "long", day: "numeric" })}
+                    {new Date(item.date).toLocaleDateString("en-US", { year: "numeric", month: "short", day: "numeric" })}
                   </div>
-                  <h3 className="text-base font-bold text-foreground mb-2 group-hover:text-primary transition-colors line-clamp-2">
+                  <h3 className="text-sm sm:text-base font-bold text-foreground mb-2 group-hover:text-primary transition-colors line-clamp-2">
                     {item.title}
                   </h3>
-                  <p className="text-muted-foreground text-sm leading-relaxed flex-1 line-clamp-3">
+                  <p className="text-muted-foreground text-xs sm:text-sm leading-relaxed flex-1 line-clamp-2">
                     {item.excerpt}
                   </p>
-                  <div className="flex items-center gap-1 text-primary text-sm font-medium mt-4 group-hover:gap-2 transition-all">
+                  <div className="flex items-center gap-1 text-primary text-sm font-medium mt-3 group-hover:gap-2 transition-all">
                     Read More <ArrowRight className="w-3.5 h-3.5" />
                   </div>
                 </div>
@@ -82,6 +81,21 @@ const NewsSection = () => {
             </motion.div>
           ))}
         </div>
+
+        <motion.div
+          initial={{ opacity: 0, y: 10 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          className="text-center mt-10"
+        >
+          <Link
+            to="/news"
+            className="inline-flex items-center gap-2 px-6 py-3 rounded-lg border border-primary/20 bg-primary/5 text-primary font-medium text-sm hover:bg-primary/10 hover:border-primary/30 transition-all duration-300"
+          >
+            View All News
+            <ArrowRight className="w-4 h-4" />
+          </Link>
+        </motion.div>
       </div>
     </section>
   );
