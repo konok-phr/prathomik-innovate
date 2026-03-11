@@ -23,7 +23,6 @@ const NewsDetail = () => {
     <PageTransition>
     <div className="min-h-screen bg-background">
       <SEOHead title={article.title} description={article.excerpt} path={`/news/${slug}`} type="article" />
-    <div className="min-h-screen bg-background">
       <TopBar />
       <Navbar />
 
