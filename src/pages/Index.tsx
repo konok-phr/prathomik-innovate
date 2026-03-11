@@ -14,10 +14,14 @@ import NewsSection from "@/components/NewsSection";
 import ContactSection from "@/components/ContactSection";
 import Footer from "@/components/Footer";
 import SectionDivider from "@/components/SectionDivider";
+import SEOHead from "@/components/SEOHead";
+import PageTransition from "@/components/PageTransition";
 
 const Index = () => {
   return (
+    <PageTransition>
     <div className="min-h-screen bg-background">
+      <SEOHead />
       <TopBar />
       <Navbar />
       <HeroSection />
