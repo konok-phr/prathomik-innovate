@@ -68,6 +68,7 @@ const AllTestimonials = () => {
 
       <Footer />
     </div>
+    </PageTransition>
   );
 };
 

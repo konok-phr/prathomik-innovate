@@ -105,6 +105,7 @@ const AllNews = () => {
 
       <Footer />
     </div>
+    </PageTransition>
   );
 };
 
