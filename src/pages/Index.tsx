@@ -13,6 +13,7 @@ import TestimonialsSection from "@/components/TestimonialsSection";
 import NewsSection from "@/components/NewsSection";
 import ContactSection from "@/components/ContactSection";
 import Footer from "@/components/Footer";
+import SectionDivider from "@/components/SectionDivider";
 
 const Index = () => {
   return (
@@ -20,16 +21,27 @@ const Index = () => {
       <TopBar />
       <Navbar />
       <HeroSection />
+      <SectionDivider variant="wave" />
       <TechShowcase />
+      <SectionDivider variant="gradient" />
       <StatsSection />
+      <SectionDivider variant="dots" />
       <ServicesSection />
+      <SectionDivider variant="wave" flip />
       <ProductsSection />
+      <SectionDivider variant="gradient" />
       <WorkflowSection />
+      <SectionDivider variant="dots" />
       <TeamSection />
+      <SectionDivider variant="wave" />
       <ClientLogosSection />
+      <SectionDivider variant="gradient" />
       <OpenSourceSection />
+      <SectionDivider variant="dots" />
       <TestimonialsSection />
+      <SectionDivider variant="wave" flip />
       <NewsSection />
+      <SectionDivider variant="gradient" />
       <ContactSection />
       <Footer />
     </div>
