@@ -1,6 +1,6 @@
 import { motion } from "framer-motion";
 import { ArrowUpRight } from "lucide-react";
-import { Link } from "react-router-dom";
+import PrefetchLink from "./PrefetchLink";
 import { products } from "@/data/products";
 import FloatingGraphics from "./FloatingGraphics";
 
@@ -35,7 +35,7 @@ const ProductsSection = () => {
               transition={{ delay: i * 0.15, duration: 0.6, ease: [0.25, 0.4, 0.25, 1] }}
               whileHover={{ y: -8, transition: { duration: 0.3 } }}
             >
-              <Link
+              <PrefetchLink
                 to={`/products/${product.slug}`}
                 className="group glass-card p-5 sm:p-8 hover:border-primary/30 transition-all duration-500 hover:glow-cyan relative overflow-hidden block"
               >
@@ -74,7 +74,7 @@ const ProductsSection = () => {
                     </span>
                   ))}
                 </div>
-              </Link>
+              </PrefetchLink>
             </motion.div>
           ))}
         </div>

@@ -1,6 +1,6 @@
 import { motion } from "framer-motion";
 import { ArrowRight, Calendar } from "lucide-react";
-import { Link } from "react-router-dom";
+import PrefetchLink from "./PrefetchLink";
 import { newsItems } from "@/data/news";
 
 const categoryColors: Record<string, string> = {
@@ -43,7 +43,7 @@ const NewsSection = () => {
               viewport={{ once: true }}
               transition={{ delay: i * 0.1, duration: 0.5 }}
             >
-              <Link
+              <PrefetchLink
                 to={`/news/${item.slug}`}
                 className="group glass-card overflow-hidden flex flex-col h-full hover:border-primary/30 transition-all duration-300"
               >
@@ -77,7 +77,7 @@ const NewsSection = () => {
                     Read More <ArrowRight className="w-3.5 h-3.5" />
                   </div>
                 </div>
-              </Link>
+              </PrefetchLink>
             </motion.div>
           ))}
         </div>
@@ -88,13 +88,13 @@ const NewsSection = () => {
           viewport={{ once: true }}
           className="text-center mt-10"
         >
-          <Link
+          <PrefetchLink
             to="/news"
             className="inline-flex items-center gap-2 px-6 py-3 rounded-lg border border-primary/20 bg-primary/5 text-primary font-medium text-sm hover:bg-primary/10 hover:border-primary/30 transition-all duration-300"
           >
             View All News
             <ArrowRight className="w-4 h-4" />
-          </Link>
+          </PrefetchLink>
         </motion.div>
       </div>
     </section>
