@@ -43,7 +43,7 @@ const NewsSection = () => {
               viewport={{ once: true }}
               transition={{ delay: i * 0.1, duration: 0.5 }}
             >
-              <Link
+              <PrefetchLink
                 to={`/news/${item.slug}`}
                 className="group glass-card overflow-hidden flex flex-col h-full hover:border-primary/30 transition-all duration-300"
               >
