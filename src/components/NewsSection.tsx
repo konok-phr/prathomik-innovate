@@ -88,7 +88,7 @@ const NewsSection = () => {
           viewport={{ once: true }}
           className="text-center mt-10"
         >
-          <Link
+          <PrefetchLink
             to="/news"
             className="inline-flex items-center gap-2 px-6 py-3 rounded-lg border border-primary/20 bg-primary/5 text-primary font-medium text-sm hover:bg-primary/10 hover:border-primary/30 transition-all duration-300"
           >
