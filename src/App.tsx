@@ -1,10 +1,11 @@
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
-import { BrowserRouter, Route, Routes } from "react-router-dom";
+import { BrowserRouter, Route, Routes, useLocation } from "react-router-dom";
 import { Toaster as Sonner } from "@/components/ui/sonner";
 import { Toaster } from "@/components/ui/toaster";
 import { TooltipProvider } from "@/components/ui/tooltip";
 import { ThemeProvider } from "@/components/ThemeProvider";
 import { lazy, Suspense } from "react";
+import { AnimatePresence } from "framer-motion";
 
 // Eager load the main page for fast initial render
 import Index from "./pages/Index.tsx";
@@ -25,6 +26,25 @@ const PageLoader = () => (
   </div>
 );
 
+const AnimatedRoutes = () => {
+  const location = useLocation();
+  return (
+    <AnimatePresence mode="wait">
+      <Suspense fallback={<PageLoader />}>
+        <Routes location={location} key={location.pathname}>
+          <Route path="/" element={<Index />} />
+          <Route path="/products/:slug" element={<ProductDetail />} />
+          <Route path="/news/:slug" element={<NewsDetail />} />
+          <Route path="/news" element={<AllNews />} />
+          <Route path="/testimonials" element={<AllTestimonials />} />
+          <Route path="/careers" element={<Careers />} />
+          <Route path="*" element={<NotFound />} />
+        </Routes>
+      </Suspense>
+    </AnimatePresence>
+  );
+};
+
 const App = () => (
   <ThemeProvider>
     <QueryClientProvider client={queryClient}>
@@ -32,17 +52,7 @@ const App = () => (
         <Toaster />
         <Sonner />
         <BrowserRouter>
-          <Suspense fallback={<PageLoader />}>
-            <Routes>
-              <Route path="/" element={<Index />} />
-              <Route path="/products/:slug" element={<ProductDetail />} />
-              <Route path="/news/:slug" element={<NewsDetail />} />
-              <Route path="/news" element={<AllNews />} />
-              <Route path="/testimonials" element={<AllTestimonials />} />
-              <Route path="/careers" element={<Careers />} />
-              <Route path="*" element={<NotFound />} />
-            </Routes>
-          </Suspense>
+          <AnimatedRoutes />
         </BrowserRouter>
       </TooltipProvider>
     </QueryClientProvider>
