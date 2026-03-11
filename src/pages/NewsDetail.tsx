@@ -112,6 +112,7 @@ const NewsDetail = () => {
 
       <Footer />
     </div>
+    </PageTransition>
   );
 };
 
