@@ -3,6 +3,8 @@ import { Briefcase, ArrowRight, MapPin, Clock, Users, Heart, Zap, Globe, Graduat
 import TopBar from "@/components/TopBar";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
+import SEOHead from "@/components/SEOHead";
+import PageTransition from "@/components/PageTransition";
 
 const openings = [
   { title: "Senior Full-Stack Developer", type: "Full-time", location: "Remote / Dhaka", department: "Engineering" },
@@ -34,7 +36,9 @@ const itemVariants = {
 
 const Careers = () => {
   return (
+    <PageTransition>
     <div className="min-h-screen bg-background">
+      <SEOHead title="Careers" description="Join the Prathomik team — explore open positions in engineering, design, AI/ML, and more." path="/careers" />
       <TopBar />
       <Navbar />
 
@@ -191,6 +195,7 @@ const Careers = () => {
 
       <Footer />
     </div>
+    </PageTransition>
   );
 };
 

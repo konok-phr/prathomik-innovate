@@ -6,6 +6,8 @@ import TopBar from "@/components/TopBar";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 import { newsItems } from "@/data/news";
+import SEOHead from "@/components/SEOHead";
+import PageTransition from "@/components/PageTransition";
 
 const categoryColors: Record<string, string> = {
   Achievement: "bg-green-500/10 text-green-400 border-green-500/20",
@@ -22,7 +24,9 @@ const AllNews = () => {
   }, []);
 
   return (
+    <PageTransition>
     <div className="min-h-screen bg-background">
+      <SEOHead title="All News" description="Latest news, updates, and announcements from Prathomik." path="/news" />
       <TopBar />
       <Navbar />
 
@@ -101,6 +105,7 @@ const AllNews = () => {
 
       <Footer />
     </div>
+    </PageTransition>
   );
 };
 

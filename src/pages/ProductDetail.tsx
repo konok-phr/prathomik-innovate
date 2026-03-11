@@ -6,6 +6,8 @@ import TopBar from "@/components/TopBar";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 import { products } from "@/data/products";
+import SEOHead from "@/components/SEOHead";
+import PageTransition from "@/components/PageTransition";
 
 const ProductDetail = () => {
   const { slug } = useParams();
@@ -22,7 +24,9 @@ const ProductDetail = () => {
   const nextProduct = currentIndex < products.length - 1 ? products[currentIndex + 1] : null;
 
   return (
+    <PageTransition>
     <div className="min-h-screen bg-background">
+      <SEOHead title={product.name} description={product.description} path={`/products/${slug}`} />
       <TopBar />
       <Navbar />
 
@@ -190,6 +194,7 @@ const ProductDetail = () => {
 
       <Footer />
     </div>
+    </PageTransition>
   );
 };
 
