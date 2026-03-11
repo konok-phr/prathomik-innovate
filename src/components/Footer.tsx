@@ -1,4 +1,5 @@
 import { Mail, MapPin, Phone } from "lucide-react";
+import prathomikLogo from "@/assets/prathomik-logo.png";
 
 const Footer = () => {
   return (
@@ -6,7 +7,7 @@ const Footer = () => {
       <div className="container px-4 sm:px-6">
         <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-10 mb-12">
           <div>
-            <h3 className="text-2xl font-bold text-gradient-cyan mb-4">Prathomik</h3>
+            <img src={prathomikLogo} alt="Prathomik" className="h-10 w-auto mb-4" />
             <p className="text-muted-foreground text-sm leading-relaxed">
               Building innovative software solutions that transform businesses and empower communities through technology.
             </p>

@@ -3,6 +3,7 @@ import { ArrowRight, Menu, X, Sun, Moon } from "lucide-react";
 import { useState, useEffect } from "react";
 import { useLocation, useNavigate } from "react-router-dom";
 import { useTheme } from "./ThemeProvider";
+import prathomikLogo from "@/assets/prathomik-logo.png";
 
 const navLinks: { href: string; label: string; isPage?: boolean }[] = [
   { href: "#services", label: "Services" },
@@ -63,9 +64,9 @@ const Navbar = () => {
       }`}
     >
         <div className="container px-4 sm:px-6 flex items-center justify-between h-16">
-          <a href="/" className="text-xl font-bold text-gradient-cyan">
-            Prathomik
-        </a>
+          <a href="/" className="flex items-center gap-2">
+            <img src={prathomikLogo} alt="Prathomik" className="h-9 w-auto" />
+          </a>
 
         {/* Desktop links */}
         <div className="hidden md:flex items-center gap-8 text-sm">
