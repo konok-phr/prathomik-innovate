@@ -77,7 +77,7 @@ const NewsSection = () => {
                     Read More <ArrowRight className="w-3.5 h-3.5" />
                   </div>
                 </div>
-              </Link>
+              </PrefetchLink>
             </motion.div>
           ))}
         </div>
