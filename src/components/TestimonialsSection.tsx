@@ -1,5 +1,6 @@
 import { motion } from "framer-motion";
 import { Quote } from "lucide-react";
+import FloatingGraphics from "./FloatingGraphics";
 
 const testimonials = [
   {
@@ -26,8 +27,9 @@ const testimonials = [
 
 const TestimonialsSection = () => {
   return (
-    <section id="testimonials" className="relative py-20 sm:py-32">
+    <section id="testimonials" className="relative py-20 sm:py-32 overflow-hidden">
       <div className="absolute bottom-0 right-0 w-[400px] h-[400px] rounded-full bg-primary/3 blur-[120px]" />
+      <FloatingGraphics variant="lines" density="low" />
       <div className="container relative z-10 px-4 sm:px-6">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
@@ -45,15 +47,24 @@ const TestimonialsSection = () => {
           {testimonials.map((t, i) => (
             <motion.div
               key={t.name}
-              initial={{ opacity: 0, y: 30 }}
-              whileInView={{ opacity: 1, y: 0 }}
+              initial={{ opacity: 0, y: 30, scale: 0.95 }}
+              whileInView={{ opacity: 1, y: 0, scale: 1 }}
               viewport={{ once: true }}
-              transition={{ delay: i * 0.1, duration: 0.5 }}
-              className="glass-card p-7 hover:border-primary/20 transition-all duration-300"
+              transition={{ delay: i * 0.12, duration: 0.6, ease: [0.25, 0.4, 0.25, 1] }}
+              whileHover={{ y: -6, transition: { duration: 0.3 } }}
+              className="glass-card p-7 hover:border-primary/20 transition-all duration-300 hover:glow-cyan relative overflow-hidden group"
             >
+              {/* Animated quote accent */}
+              <motion.div
+                className="absolute -top-4 -right-4 text-primary/[0.04] group-hover:text-primary/[0.08] transition-colors duration-500"
+                animate={{ rotate: [0, 5, -5, 0] }}
+                transition={{ duration: 6, repeat: Infinity, ease: "easeInOut" }}
+              >
+                <Quote className="w-24 h-24" />
+              </motion.div>
               <Quote className="w-8 h-8 text-primary/30 mb-4" />
-              <p className="text-muted-foreground text-sm leading-relaxed mb-6">"{t.text}"</p>
-              <div>
+              <p className="text-muted-foreground text-sm leading-relaxed mb-6 relative z-10">"{t.text}"</p>
+              <div className="relative z-10">
                 <p className="font-semibold text-foreground">{t.name}</p>
                 <p className="text-primary text-xs font-medium">{t.role}</p>
               </div>
