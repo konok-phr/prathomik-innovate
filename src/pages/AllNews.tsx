@@ -24,7 +24,9 @@ const AllNews = () => {
   }, []);
 
   return (
+    <PageTransition>
     <div className="min-h-screen bg-background">
+      <SEOHead title="All News" description="Latest news, updates, and announcements from Prathomik." path="/news" />
       <TopBar />
       <Navbar />
 
