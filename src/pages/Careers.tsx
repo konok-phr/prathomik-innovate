@@ -3,6 +3,8 @@ import { Briefcase, ArrowRight, MapPin, Clock, Users, Heart, Zap, Globe, Graduat
 import TopBar from "@/components/TopBar";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
+import SEOHead from "@/components/SEOHead";
+import PageTransition from "@/components/PageTransition";
 
 const openings = [
   { title: "Senior Full-Stack Developer", type: "Full-time", location: "Remote / Dhaka", department: "Engineering" },

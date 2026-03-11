@@ -6,6 +6,8 @@ import TopBar from "@/components/TopBar";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 import { testimonials } from "@/components/TestimonialsSection";
+import SEOHead from "@/components/SEOHead";
+import PageTransition from "@/components/PageTransition";
 
 const AllTestimonials = () => {
   useEffect(() => {

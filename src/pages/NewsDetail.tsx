@@ -6,6 +6,8 @@ import TopBar from "@/components/TopBar";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 import { newsItems } from "@/data/news";
+import SEOHead from "@/components/SEOHead";
+import PageTransition from "@/components/PageTransition";
 
 const NewsDetail = () => {
   const { slug } = useParams();
@@ -18,6 +20,9 @@ const NewsDetail = () => {
   if (!article) return <Navigate to="/" replace />;
 
   return (
+    <PageTransition>
+    <div className="min-h-screen bg-background">
+      <SEOHead title={article.title} description={article.excerpt} path={`/news/${slug}`} type="article" />
     <div className="min-h-screen bg-background">
       <TopBar />
       <Navbar />

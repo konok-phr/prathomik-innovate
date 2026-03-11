@@ -49,7 +49,7 @@ const Index = () => {
       <ContactSection />
       <Footer />
     </div>
-  );
+    </PageTransition>
 };
 
 export default Index;
