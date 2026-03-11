@@ -6,6 +6,8 @@ import { TooltipProvider } from "@/components/ui/tooltip";
 import { ThemeProvider } from "@/components/ThemeProvider";
 import { lazy, Suspense } from "react";
 import { AnimatePresence } from "framer-motion";
+import BackToTop from "@/components/BackToTop";
+import PageLoader from "@/components/PageLoader";
 
 // Eager load the main page for fast initial render
 import Index from "./pages/Index.tsx";
@@ -19,12 +21,6 @@ const AllTestimonials = lazy(() => import("./pages/AllTestimonials.tsx"));
 const AllNews = lazy(() => import("./pages/AllNews.tsx"));
 
 const queryClient = new QueryClient();
-
-const PageLoader = () => (
-  <div className="min-h-screen bg-background flex items-center justify-center">
-    <div className="w-8 h-8 border-2 border-primary border-t-transparent rounded-full animate-spin" />
-  </div>
-);
 
 const AnimatedRoutes = () => {
   const location = useLocation();
@@ -53,6 +49,7 @@ const App = () => (
         <Sonner />
         <BrowserRouter>
           <AnimatedRoutes />
+          <BackToTop />
         </BrowserRouter>
       </TooltipProvider>
     </QueryClientProvider>
