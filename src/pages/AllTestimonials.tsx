@@ -15,7 +15,9 @@ const AllTestimonials = () => {
   }, []);
 
   return (
+    <PageTransition>
     <div className="min-h-screen bg-background">
+      <SEOHead title="Testimonials" description="What our clients say about working with Prathomik." path="/testimonials" />
       <TopBar />
       <Navbar />
 
