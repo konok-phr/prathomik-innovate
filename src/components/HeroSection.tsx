@@ -3,6 +3,7 @@ import { ArrowRight, Code2, Sparkles, ChevronDown } from "lucide-react";
 import { useState, useEffect } from "react";
 import ParticleGrid from "./ParticleGrid";
 import CodeTerminal from "./CodeTerminal";
+import { useTheme } from "./ThemeProvider";
 
 import techReact from "@/assets/tech-react.png";
 import techPhp from "@/assets/tech-php.png";
