@@ -94,7 +94,7 @@ const NewsSection = () => {
           >
             View All News
             <ArrowRight className="w-4 h-4" />
-          </Link>
+          </PrefetchLink>
         </motion.div>
       </div>
     </section>

@@ -74,7 +74,7 @@ const ProductsSection = () => {
                     </span>
                   ))}
                 </div>
-              </Link>
+              </PrefetchLink>
             </motion.div>
           ))}
         </div>
