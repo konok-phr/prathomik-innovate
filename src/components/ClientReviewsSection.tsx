@@ -74,9 +74,9 @@ const MediaGallerySection = () => {
               variants={item}
               whileHover={{ y: -5, transition: { duration: 0.3 } }}
               className={`group glass-card overflow-hidden cursor-pointer hover:border-primary/30 transition-all duration-300 hover:glow-cyan ${
-                !showAll && index >= VISIBLE_COUNTS.mobile ? "hidden sm:block" : ""
+                index >= VISIBLE_COUNTS.mobile ? "hidden sm:block" : ""
               } ${
-                !showAll && index >= VISIBLE_COUNTS.sm ? "sm:hidden lg:block" : ""
+                index >= VISIBLE_COUNTS.sm ? "sm:hidden lg:block" : ""
               }`}
               onClick={() => {
                 if (media.type === "video" && media.videoUrl) {
