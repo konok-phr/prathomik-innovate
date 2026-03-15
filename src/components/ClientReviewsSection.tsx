@@ -28,10 +28,8 @@ const MediaGallerySection = () => {
   const [activeVideo, setActiveVideo] = useState<string | null>(null);
   const [activeImage, setActiveImage] = useState<string | null>(null);
   const [activeTitle, setActiveTitle] = useState<string | null>(null);
-  const [showAll, setShowAll] = useState(false);
 
-  // Use lg count as max visible for initial render (CSS will hide extras per breakpoint)
-  const visibleItems = showAll ? mediaItems : mediaItems.slice(0, VISIBLE_COUNTS.lg);
+  const visibleItems = mediaItems.slice(0, VISIBLE_COUNTS.lg);
 
   return (
     <section id="media" className="relative py-20 sm:py-32 overflow-hidden">
