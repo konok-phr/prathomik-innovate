@@ -1,73 +1,78 @@
 import { useState } from "react";
 import { motion } from "framer-motion";
-import { Play, Image, FileCheck, Star, Film, Camera } from "lucide-react";
+import { Play, Film, Image as ImageIcon } from "lucide-react";
 import { Dialog, DialogContent, DialogTitle } from "@/components/ui/dialog";
 import { VisuallyHidden } from "@radix-ui/react-visually-hidden";
 import FloatingGraphics from "./FloatingGraphics";
 
-type MediaCategory = "videos" | "photos" | "agreements";
-
-type VideoItem = {
+type MediaItem = {
   id: number;
+  type: "video" | "image";
   title: string;
-  subtitle: string;
-  videoUrl: string;
-  rating?: number;
+  videoUrl?: string;
+  imageUrl?: string;
 };
 
-type PhotoItem = {
-  id: number;
-  title: string;
-  imageUrl: string;
-};
-
-const videos: VideoItem[] = [
+const mediaItems: MediaItem[] = [
   {
     id: 1,
+    type: "video",
     title: "EduTech BD - Client Review",
-    subtitle: "Rahim Uddin, CEO",
     videoUrl: "https://www.youtube.com/embed/dQw4w9WgXcQ",
-    rating: 5,
   },
   {
     id: 2,
+    type: "video",
     title: "GreenMart - Client Review",
-    subtitle: "Fatema Akter, Founder",
     videoUrl: "https://www.youtube.com/embed/dQw4w9WgXcQ",
-    rating: 5,
   },
   {
     id: 3,
+    type: "video",
     title: "Product Launch Promo",
-    subtitle: "Prathomik Official",
     videoUrl: "https://www.youtube.com/embed/dQw4w9WgXcQ",
   },
-];
-
-const photos: PhotoItem[] = [
-  { id: 1, title: "Team Event 2024", imageUrl: "/placeholder.svg" },
-  { id: 2, title: "Office Launch", imageUrl: "/placeholder.svg" },
-  { id: 3, title: "Client Meeting", imageUrl: "/placeholder.svg" },
-  { id: 4, title: "Workshop Promo", imageUrl: "/placeholder.svg" },
-  { id: 5, title: "Award Ceremony", imageUrl: "/placeholder.svg" },
-  { id: 6, title: "Product Demo Day", imageUrl: "/placeholder.svg" },
-];
-
-const agreements: PhotoItem[] = [
-  { id: 1, title: "EduTech BD Agreement", imageUrl: "/placeholder.svg" },
-  { id: 2, title: "GreenMart Agreement", imageUrl: "/placeholder.svg" },
-  { id: 3, title: "PaySwift BD Agreement", imageUrl: "/placeholder.svg" },
-];
-
-const categories: { key: MediaCategory; label: string; icon: typeof Film }[] = [
-  { key: "videos", label: "Videos", icon: Film },
-  { key: "photos", label: "Photos", icon: Camera },
-  { key: "agreements", label: "Agreements", icon: FileCheck },
+  {
+    id: 4,
+    type: "image",
+    title: "Team Event 2024",
+    imageUrl: "/placeholder.svg",
+  },
+  {
+    id: 5,
+    type: "image",
+    title: "Office Launch",
+    imageUrl: "/placeholder.svg",
+  },
+  {
+    id: 6,
+    type: "image",
+    title: "Client Agreement - EduTech BD",
+    imageUrl: "/placeholder.svg",
+  },
+  {
+    id: 7,
+    type: "image",
+    title: "Workshop Promo",
+    imageUrl: "/placeholder.svg",
+  },
+  {
+    id: 8,
+    type: "image",
+    title: "Award Ceremony",
+    imageUrl: "/placeholder.svg",
+  },
+  {
+    id: 9,
+    type: "image",
+    title: "Client Agreement - GreenMart",
+    imageUrl: "/placeholder.svg",
+  },
 ];
 
 const container = {
   hidden: {},
-  show: { transition: { staggerChildren: 0.1 } },
+  show: { transition: { staggerChildren: 0.08 } },
 };
 
 const item = {
@@ -81,7 +86,6 @@ const item = {
 };
 
 const MediaGallerySection = () => {
-  const [activeCategory, setActiveCategory] = useState<MediaCategory>("videos");
   const [activeVideo, setActiveVideo] = useState<string | null>(null);
   const [activeImage, setActiveImage] = useState<string | null>(null);
 
@@ -96,7 +100,7 @@ const MediaGallerySection = () => {
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
-          className="text-center mb-12"
+          className="text-center mb-14"
         >
           <motion.span
             initial={{ opacity: 0, scale: 0.8 }}
@@ -110,140 +114,76 @@ const MediaGallerySection = () => {
             Media <span className="text-gradient-cyan">Gallery</span>
           </h2>
           <p className="text-muted-foreground max-w-xl mx-auto text-sm sm:text-base">
-            আমাদের ভিডিও রিভিউ, প্রমোশনাল ছবি এবং ক্লায়েন্ট এগ্রিমেন্ট — সব এক জায়গায়।
+            Videos, promotional photos, and client agreements — all in one place.
           </p>
         </motion.div>
 
-        {/* Category Tabs */}
-        <div className="flex justify-center gap-2 sm:gap-3 mb-10">
-          {categories.map((cat) => (
-            <button
-              key={cat.key}
-              onClick={() => setActiveCategory(cat.key)}
-              className={`flex items-center gap-2 px-4 sm:px-5 py-2.5 rounded-full text-sm font-medium transition-all duration-300 border ${
-                activeCategory === cat.key
-                  ? "bg-primary text-primary-foreground border-primary shadow-lg"
-                  : "bg-secondary/50 text-muted-foreground border-border hover:border-primary/40 hover:text-foreground"
-              }`}
+        {/* Unified Grid */}
+        <motion.div
+          variants={container}
+          initial="hidden"
+          whileInView="show"
+          viewport={{ once: true }}
+          className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-4 sm:gap-5"
+        >
+          {mediaItems.map((media) => (
+            <motion.div
+              key={media.id}
+              variants={item}
+              whileHover={{ y: -5, transition: { duration: 0.3 } }}
+              className="group glass-card overflow-hidden cursor-pointer hover:border-primary/30 transition-all duration-300 hover:glow-cyan"
+              onClick={() => {
+                if (media.type === "video" && media.videoUrl) {
+                  setActiveVideo(media.videoUrl);
+                } else if (media.imageUrl) {
+                  setActiveImage(media.imageUrl);
+                }
+              }}
             >
-              <cat.icon className="w-4 h-4" />
-              {cat.label}
-            </button>
+              <div className={`relative ${media.type === "video" ? "aspect-video" : "aspect-square"} bg-secondary/40 flex items-center justify-center overflow-hidden`}>
+                {media.type === "image" && media.imageUrl && (
+                  <img
+                    src={media.imageUrl}
+                    alt={media.title}
+                    className="w-full h-full object-cover opacity-80 group-hover:opacity-100 group-hover:scale-105 transition-all duration-500"
+                    loading="lazy"
+                  />
+                )}
+                {media.type === "video" && (
+                  <Film className="w-10 h-10 text-muted-foreground/20" />
+                )}
+
+                {/* Overlay */}
+                <div className="absolute inset-0 bg-gradient-to-t from-background/80 via-background/20 to-transparent" />
+
+                {/* Play button for videos */}
+                {media.type === "video" && (
+                  <div className="absolute inset-0 z-20 flex items-center justify-center">
+                    <div className="w-12 h-12 rounded-full bg-primary/90 flex items-center justify-center shadow-lg group-hover:shadow-primary/40 group-hover:scale-110 transition-all duration-300">
+                      <Play className="w-5 h-5 text-primary-foreground ml-0.5" fill="currentColor" />
+                    </div>
+                  </div>
+                )}
+
+                {/* Type badge */}
+                <div className="absolute top-2 right-2 z-10">
+                  <div className="w-7 h-7 rounded-md bg-background/70 backdrop-blur-sm flex items-center justify-center border border-border/50">
+                    {media.type === "video" ? (
+                      <Film className="w-3.5 h-3.5 text-primary" />
+                    ) : (
+                      <ImageIcon className="w-3.5 h-3.5 text-primary" />
+                    )}
+                  </div>
+                </div>
+
+                {/* Title */}
+                <div className="absolute bottom-2 left-2 right-2 z-10">
+                  <p className="text-xs sm:text-sm font-medium text-foreground truncate">{media.title}</p>
+                </div>
+              </div>
+            </motion.div>
           ))}
-        </div>
-
-        {/* Videos Tab */}
-        {activeCategory === "videos" && (
-          <motion.div
-            key="videos"
-            variants={container}
-            initial="hidden"
-            animate="show"
-            className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6"
-          >
-            {videos.map((v) => (
-              <motion.div
-                key={v.id}
-                variants={item}
-                whileHover={{ y: -6, transition: { duration: 0.3 } }}
-                className="group glass-card overflow-hidden cursor-pointer hover:border-primary/30 transition-all duration-300 hover:glow-cyan"
-                onClick={() => setActiveVideo(v.videoUrl)}
-              >
-                <div className="relative aspect-video bg-secondary/50 flex items-center justify-center overflow-hidden">
-                  <div className="absolute inset-0 bg-gradient-to-t from-background/80 to-transparent z-10" />
-                  <Film className="w-10 h-10 text-muted-foreground/30" />
-                  <motion.div
-                    className="absolute inset-0 z-20 flex items-center justify-center"
-                    whileHover={{ scale: 1.1 }}
-                  >
-                    <div className="w-14 h-14 rounded-full bg-primary/90 flex items-center justify-center shadow-lg group-hover:shadow-primary/40 transition-shadow">
-                      <Play className="w-6 h-6 text-primary-foreground ml-0.5" fill="currentColor" />
-                    </div>
-                  </motion.div>
-                </div>
-                <div className="p-4">
-                  {v.rating && (
-                    <div className="flex items-center gap-1 mb-2">
-                      {Array.from({ length: v.rating }).map((_, i) => (
-                        <Star key={i} className="w-3.5 h-3.5 text-primary fill-primary" />
-                      ))}
-                    </div>
-                  )}
-                  <p className="font-semibold text-foreground text-sm">{v.title}</p>
-                  <p className="text-xs text-muted-foreground">{v.subtitle}</p>
-                </div>
-              </motion.div>
-            ))}
-          </motion.div>
-        )}
-
-        {/* Photos Tab */}
-        {activeCategory === "photos" && (
-          <motion.div
-            key="photos"
-            variants={container}
-            initial="hidden"
-            animate="show"
-            className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-4"
-          >
-            {photos.map((p) => (
-              <motion.div
-                key={p.id}
-                variants={item}
-                whileHover={{ y: -4, transition: { duration: 0.3 } }}
-                className="group glass-card overflow-hidden cursor-pointer hover:border-primary/30 transition-all duration-300"
-                onClick={() => setActiveImage(p.imageUrl)}
-              >
-                <div className="relative aspect-square bg-secondary/30">
-                  <img
-                    src={p.imageUrl}
-                    alt={p.title}
-                    className="w-full h-full object-cover opacity-80 group-hover:opacity-100 transition-opacity"
-                    loading="lazy"
-                  />
-                  <div className="absolute inset-0 bg-gradient-to-t from-background/70 to-transparent opacity-0 group-hover:opacity-100 transition-opacity" />
-                  <div className="absolute bottom-2 left-2 right-2 z-10 opacity-0 group-hover:opacity-100 transition-opacity">
-                    <p className="text-xs font-medium text-foreground truncate">{p.title}</p>
-                  </div>
-                </div>
-              </motion.div>
-            ))}
-          </motion.div>
-        )}
-
-        {/* Agreements Tab */}
-        {activeCategory === "agreements" && (
-          <motion.div
-            key="agreements"
-            variants={container}
-            initial="hidden"
-            animate="show"
-            className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6"
-          >
-            {agreements.map((a) => (
-              <motion.div
-                key={a.id}
-                variants={item}
-                whileHover={{ y: -4, transition: { duration: 0.3 } }}
-                className="group glass-card overflow-hidden cursor-pointer hover:border-primary/30 transition-all duration-300"
-                onClick={() => setActiveImage(a.imageUrl)}
-              >
-                <div className="relative aspect-[3/4] bg-secondary/30 flex items-center justify-center">
-                  <img
-                    src={a.imageUrl}
-                    alt={a.title}
-                    className="w-full h-full object-cover opacity-80 group-hover:opacity-100 transition-opacity"
-                    loading="lazy"
-                  />
-                  <div className="absolute inset-0 bg-gradient-to-t from-background/60 to-transparent" />
-                  <div className="absolute bottom-3 left-3 right-3 z-10">
-                    <p className="text-sm font-medium text-foreground">{a.title}</p>
-                  </div>
-                </div>
-              </motion.div>
-            ))}
-          </motion.div>
-        )}
+        </motion.div>
       </div>
 
       {/* Video Modal */}
