@@ -56,7 +56,7 @@ const NewsSection = () => {
                   />
                   <div className="absolute inset-0 bg-gradient-to-t from-background/80 to-transparent" />
                   <div className="absolute top-3 left-3">
-                    <span className={`px-2.5 py-1 text-xs font-medium rounded-full border ${categoryColors[item.category] || "bg-primary/10 text-primary border-primary/20"}`}>
+                    <span className={`px-3 py-1 text-xs font-semibold rounded-full shadow-md backdrop-blur-sm ${categoryColors[item.category] || "bg-primary/90 text-primary-foreground"}`}>
                       {item.category}
                     </span>
                   </div>
