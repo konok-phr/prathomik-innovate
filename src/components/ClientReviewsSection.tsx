@@ -151,7 +151,7 @@ const ClientReviewsSection = () => {
                 <div className="p-4">
                   <div className="flex items-center gap-1 mb-2">
                     {Array.from({ length: review.rating }).map((_, i) => (
-                      <Star key={i} className="w-3.5 h-3.5 text-yellow-500 fill-yellow-500" />
+                      <Star key={i} className="w-3.5 h-3.5 text-primary fill-primary" />
                     ))}
                   </div>
                   <p className="font-semibold text-foreground text-sm">{review.clientName}</p>
