@@ -185,11 +185,9 @@ const MediaGallerySection = () => {
       </div>
 
       {/* Video Modal */}
-      <Dialog open={!!activeVideo} onOpenChange={() => setActiveVideo(null)}>
+      <Dialog open={!!activeVideo} onOpenChange={() => { setActiveVideo(null); setActiveTitle(null); }}>
         <DialogContent className="max-w-3xl p-0 overflow-hidden bg-background border-border">
-          <VisuallyHidden>
-            <DialogTitle>Video</DialogTitle>
-          </VisuallyHidden>
+          <DialogTitle className="px-4 pt-4 pb-2 text-base font-semibold">{activeTitle || "Video"}</DialogTitle>
           <div className="aspect-video w-full">
             {activeVideo && (
               <iframe
@@ -197,7 +195,7 @@ const MediaGallerySection = () => {
                 className="w-full h-full"
                 allow="autoplay; encrypted-media"
                 allowFullScreen
-                title="Video"
+                title={activeTitle || "Video"}
               />
             )}
           </div>
@@ -205,13 +203,11 @@ const MediaGallerySection = () => {
       </Dialog>
 
       {/* Image Modal */}
-      <Dialog open={!!activeImage} onOpenChange={() => setActiveImage(null)}>
+      <Dialog open={!!activeImage} onOpenChange={() => { setActiveImage(null); setActiveTitle(null); }}>
         <DialogContent className="max-w-2xl p-2 bg-background border-border">
-          <VisuallyHidden>
-            <DialogTitle>Photo</DialogTitle>
-          </VisuallyHidden>
+          <DialogTitle className="px-2 pt-2 pb-1 text-base font-semibold">{activeTitle || "Photo"}</DialogTitle>
           {activeImage && (
-            <img src={activeImage} alt="Media" className="w-full h-auto rounded-lg" />
+            <img src={activeImage} alt={activeTitle || "Media"} className="w-full h-auto rounded-lg" />
           )}
         </DialogContent>
       </Dialog>
