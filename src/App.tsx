@@ -21,6 +21,7 @@ const NotFound = lazy(() => import("./pages/NotFound.tsx"));
 const Careers = lazy(() => import("./pages/Careers.tsx"));
 const AllTestimonials = lazy(() => import("./pages/AllTestimonials.tsx"));
 const AllNews = lazy(() => import("./pages/AllNews.tsx"));
+const AllMedia = lazy(() => import("./pages/AllMedia.tsx"));
 
 const queryClient = new QueryClient();
 
