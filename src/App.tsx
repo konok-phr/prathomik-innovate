@@ -53,7 +53,7 @@ const App = () => (
           <ScrollProgress />
           <AnimatedRoutes />
           <BackToTop />
-          <WhatsAppButton />
+          
         </BrowserRouter>
       </TooltipProvider>
     </QueryClientProvider>
