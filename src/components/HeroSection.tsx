@@ -161,7 +161,7 @@ const HeroSection = () => {
               <h1 className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-bold tracking-tight mb-2 md:mb-4">
                 <span className="text-foreground">We Build</span>
               </h1>
-              <div className="h-[1.3em] text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-bold relative mb-4 md:mb-6">
+              <div className="min-h-[2.6em] sm:min-h-[1.3em] text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-bold relative mb-4 md:mb-6">
                 <span className="text-gradient-cyan" style={{ lineHeight: "1.3" }}>
                   {displayText}
                 </span>
