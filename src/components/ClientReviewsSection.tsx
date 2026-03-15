@@ -2,72 +2,9 @@ import { useState } from "react";
 import { motion } from "framer-motion";
 import { Play, Film, Image as ImageIcon, ArrowRight } from "lucide-react";
 import { Dialog, DialogContent, DialogTitle } from "@/components/ui/dialog";
+import { Link } from "react-router-dom";
 import FloatingGraphics from "./FloatingGraphics";
-
-type MediaItem = {
-  id: number;
-  type: "video" | "image";
-  title: string;
-  videoUrl?: string;
-  imageUrl?: string;
-};
-
-const mediaItems: MediaItem[] = [
-  {
-    id: 1,
-    type: "video",
-    title: "EduTech BD - Client Review",
-    videoUrl: "https://www.youtube.com/embed/dQw4w9WgXcQ",
-  },
-  {
-    id: 2,
-    type: "video",
-    title: "GreenMart - Client Review",
-    videoUrl: "https://www.youtube.com/embed/dQw4w9WgXcQ",
-  },
-  {
-    id: 3,
-    type: "video",
-    title: "Product Launch Promo",
-    videoUrl: "https://www.youtube.com/embed/dQw4w9WgXcQ",
-  },
-  {
-    id: 4,
-    type: "image",
-    title: "Team Event 2024",
-    imageUrl: "/placeholder.svg",
-  },
-  {
-    id: 5,
-    type: "image",
-    title: "Office Launch",
-    imageUrl: "/placeholder.svg",
-  },
-  {
-    id: 6,
-    type: "image",
-    title: "Client Agreement - EduTech BD",
-    imageUrl: "/placeholder.svg",
-  },
-  {
-    id: 7,
-    type: "image",
-    title: "Workshop Promo",
-    imageUrl: "/placeholder.svg",
-  },
-  {
-    id: 8,
-    type: "image",
-    title: "Award Ceremony",
-    imageUrl: "/placeholder.svg",
-  },
-  {
-    id: 9,
-    type: "image",
-    title: "Client Agreement - GreenMart",
-    imageUrl: "/placeholder.svg",
-  },
-];
+import { mediaItems } from "@/data/media";
 
 // Show 2 rows: mobile 2 cols = 4, sm 3 cols = 6, lg 4 cols = 8
 const VISIBLE_COUNTS = { mobile: 4, sm: 6, lg: 8 };
@@ -91,10 +28,8 @@ const MediaGallerySection = () => {
   const [activeVideo, setActiveVideo] = useState<string | null>(null);
   const [activeImage, setActiveImage] = useState<string | null>(null);
   const [activeTitle, setActiveTitle] = useState<string | null>(null);
-  const [showAll, setShowAll] = useState(false);
 
-  // Use lg count as max visible for initial render (CSS will hide extras per breakpoint)
-  const visibleItems = showAll ? mediaItems : mediaItems.slice(0, VISIBLE_COUNTS.lg);
+  const visibleItems = mediaItems.slice(0, VISIBLE_COUNTS.lg);
 
   return (
     <section id="media" className="relative py-20 sm:py-32 overflow-hidden">
@@ -139,9 +74,9 @@ const MediaGallerySection = () => {
               variants={item}
               whileHover={{ y: -5, transition: { duration: 0.3 } }}
               className={`group glass-card overflow-hidden cursor-pointer hover:border-primary/30 transition-all duration-300 hover:glow-cyan ${
-                !showAll && index >= VISIBLE_COUNTS.mobile ? "hidden sm:block" : ""
+                index >= VISIBLE_COUNTS.mobile ? "hidden sm:block" : ""
               } ${
-                !showAll && index >= VISIBLE_COUNTS.sm ? "sm:hidden lg:block" : ""
+                index >= VISIBLE_COUNTS.sm ? "sm:hidden lg:block" : ""
               }`}
               onClick={() => {
                 if (media.type === "video" && media.videoUrl) {
@@ -191,20 +126,20 @@ const MediaGallerySection = () => {
         </motion.div>
 
         {/* View All Media button */}
-        {!showAll && mediaItems.length > VISIBLE_COUNTS.mobile && (
+        {mediaItems.length > VISIBLE_COUNTS.mobile && (
           <motion.div
             initial={{ opacity: 0, y: 10 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             className="flex justify-center mt-10"
           >
-            <button
-              onClick={() => setShowAll(true)}
+            <Link
+              to="/media"
               className="group inline-flex items-center gap-2 px-6 py-3 rounded-full border border-primary/30 bg-primary/5 text-primary font-medium text-sm hover:bg-primary/10 hover:border-primary/50 transition-all duration-300"
             >
               View All Media
               <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform duration-300" />
-            </button>
+            </Link>
           </motion.div>
         )}
       </div>
