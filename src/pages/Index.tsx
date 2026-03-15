@@ -48,6 +48,8 @@ const Index = () => {
       <SectionReveal><TestimonialsSection /></SectionReveal>
       <SectionDivider variant="wave" flip />
       <SectionReveal><NewsSection /></SectionReveal>
+      <SectionDivider variant="dots" />
+      <SectionReveal><ClientReviewsSection /></SectionReveal>
       <SectionDivider variant="gradient" />
       <SectionReveal><FAQSection /></SectionReveal>
       <SectionDivider variant="dots" />
