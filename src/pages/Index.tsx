@@ -1,6 +1,7 @@
 import TopBar from "@/components/TopBar";
 import Navbar from "@/components/Navbar";
 import HeroSection from "@/components/HeroSection";
+import ClientReviewsSection from "@/components/ClientReviewsSection";
 import TechShowcase from "@/components/TechShowcase";
 import StatsSection from "@/components/StatsSection";
 import ServicesSection from "@/components/ServicesSection";
