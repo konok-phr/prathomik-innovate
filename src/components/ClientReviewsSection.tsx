@@ -128,20 +128,20 @@ const MediaGallerySection = () => {
         </motion.div>
 
         {/* View All Media button */}
-        {!showAll && mediaItems.length > VISIBLE_COUNTS.mobile && (
+        {mediaItems.length > VISIBLE_COUNTS.mobile && (
           <motion.div
             initial={{ opacity: 0, y: 10 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             className="flex justify-center mt-10"
           >
-            <button
-              onClick={() => setShowAll(true)}
+            <Link
+              to="/media"
               className="group inline-flex items-center gap-2 px-6 py-3 rounded-full border border-primary/30 bg-primary/5 text-primary font-medium text-sm hover:bg-primary/10 hover:border-primary/50 transition-all duration-300"
             >
               View All Media
               <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform duration-300" />
-            </button>
+            </Link>
           </motion.div>
         )}
       </div>
