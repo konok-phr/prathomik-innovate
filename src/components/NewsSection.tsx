@@ -4,12 +4,12 @@ import PrefetchLink from "./PrefetchLink";
 import { newsItems } from "@/data/news";
 
 const categoryColors: Record<string, string> = {
-  Achievement: "bg-green-500/10 text-green-400 border-green-500/20",
-  Seminar: "bg-blue-500/10 text-blue-400 border-blue-500/20",
-  Partnership: "bg-purple-500/10 text-purple-400 border-purple-500/20",
-  "Product Launch": "bg-primary/10 text-primary border-primary/20",
-  Workshop: "bg-orange-500/10 text-orange-400 border-orange-500/20",
-  Milestone: "bg-yellow-500/10 text-yellow-400 border-yellow-500/20",
+  Achievement: "bg-green-500/90 text-white",
+  Seminar: "bg-blue-500/90 text-white",
+  Partnership: "bg-purple-500/90 text-white",
+  "Product Launch": "bg-primary/90 text-primary-foreground",
+  Workshop: "bg-orange-500/90 text-white",
+  Milestone: "bg-yellow-500/90 text-white",
 };
 
 const NewsSection = () => {
