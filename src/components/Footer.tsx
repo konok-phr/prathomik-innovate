@@ -22,6 +22,15 @@ const Footer = () => {
             </div>
           </div>
           <div>
+            <h4 className="font-semibold text-foreground mb-4">Our Tools</h4>
+            <div className="space-y-2 text-sm text-muted-foreground">
+              <a href="https://tools.system.bd" target="_blank" rel="noopener noreferrer" className="block hover:text-primary transition-colors">
+                Dev Tools — tools.system.bd
+              </a>
+            </div>
+            <p className="text-xs text-muted-foreground/60 mt-3">আরো টুলস শীঘ্রই আসছে...</p>
+          </div>
+          <div>
             <h4 className="font-semibold text-foreground mb-4">Contact</h4>
             <div className="space-y-3 text-sm text-muted-foreground">
               <a href="mailto:hello@prathomik.com" className="flex items-center gap-2 hover:text-primary transition-colors">
