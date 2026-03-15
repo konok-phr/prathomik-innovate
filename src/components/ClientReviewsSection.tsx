@@ -87,7 +87,7 @@ const ClientReviewsSection = () => {
   return (
     <section id="reviews" className="relative py-20 sm:py-32 overflow-hidden">
       <div className="absolute inset-0 dot-pattern opacity-30" />
-      <FloatingGraphics variant="circles" density="low" />
+      <FloatingGraphics variant="dots" density="low" />
 
       <div className="container relative z-10 px-4 sm:px-6">
         <motion.div
