@@ -19,16 +19,8 @@ const Footer = () => {
               <a href="/#products" className="block hover:text-primary transition-colors">Products</a>
               <a href="/#open-source" className="block hover:text-primary transition-colors">Open Source</a>
               <a href="/careers" className="block hover:text-primary transition-colors">Careers</a>
+              <a href="https://tools.system.bd" target="_blank" rel="noopener noreferrer" className="block hover:text-primary transition-colors">Dev Tools</a>
             </div>
-          </div>
-          <div>
-            <h4 className="font-semibold text-foreground mb-4">Our Tools</h4>
-            <div className="space-y-2 text-sm text-muted-foreground">
-              <a href="https://tools.system.bd" target="_blank" rel="noopener noreferrer" className="block hover:text-primary transition-colors">
-                Dev Tools — tools.system.bd
-              </a>
-            </div>
-            <p className="text-xs text-muted-foreground/60 mt-3">আরো টুলস শীঘ্রই আসছে...</p>
           </div>
           <div>
             <h4 className="font-semibold text-foreground mb-4">Contact</h4>
