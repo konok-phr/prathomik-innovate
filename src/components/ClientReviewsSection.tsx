@@ -88,6 +88,7 @@ const item = {
 const MediaGallerySection = () => {
   const [activeVideo, setActiveVideo] = useState<string | null>(null);
   const [activeImage, setActiveImage] = useState<string | null>(null);
+  const [activeTitle, setActiveTitle] = useState<string | null>(null);
 
   return (
     <section id="media" className="relative py-20 sm:py-32 overflow-hidden">
@@ -135,12 +136,14 @@ const MediaGallerySection = () => {
               onClick={() => {
                 if (media.type === "video" && media.videoUrl) {
                   setActiveVideo(media.videoUrl);
+                  setActiveTitle(media.title);
                 } else if (media.imageUrl) {
                   setActiveImage(media.imageUrl);
+                  setActiveTitle(media.title);
                 }
               }}
             >
-              <div className={`relative ${media.type === "video" ? "aspect-video" : "aspect-square"} bg-secondary/40 flex items-center justify-center overflow-hidden`}>
+              <div className="relative aspect-[4/3] bg-secondary/40 flex items-center justify-center overflow-hidden">
                 {media.type === "image" && media.imageUrl && (
                   <img
                     src={media.imageUrl}
@@ -153,8 +156,8 @@ const MediaGallerySection = () => {
                   <Film className="w-10 h-10 text-muted-foreground/20" />
                 )}
 
-                {/* Overlay */}
-                <div className="absolute inset-0 bg-gradient-to-t from-background/80 via-background/20 to-transparent" />
+                {/* Hover overlay */}
+                <div className="absolute inset-0 bg-background/0 group-hover:bg-background/30 transition-all duration-300" />
 
                 {/* Play button for videos */}
                 {media.type === "video" && (
@@ -175,11 +178,6 @@ const MediaGallerySection = () => {
                     )}
                   </div>
                 </div>
-
-                {/* Title */}
-                <div className="absolute bottom-2 left-2 right-2 z-10">
-                  <p className="text-xs sm:text-sm font-medium text-foreground truncate">{media.title}</p>
-                </div>
               </div>
             </motion.div>
           ))}
@@ -187,11 +185,9 @@ const MediaGallerySection = () => {
       </div>
 
       {/* Video Modal */}
-      <Dialog open={!!activeVideo} onOpenChange={() => setActiveVideo(null)}>
+      <Dialog open={!!activeVideo} onOpenChange={() => { setActiveVideo(null); setActiveTitle(null); }}>
         <DialogContent className="max-w-3xl p-0 overflow-hidden bg-background border-border">
-          <VisuallyHidden>
-            <DialogTitle>Video</DialogTitle>
-          </VisuallyHidden>
+          <DialogTitle className="px-4 pt-4 pb-2 text-base font-semibold">{activeTitle || "Video"}</DialogTitle>
           <div className="aspect-video w-full">
             {activeVideo && (
               <iframe
@@ -199,7 +195,7 @@ const MediaGallerySection = () => {
                 className="w-full h-full"
                 allow="autoplay; encrypted-media"
                 allowFullScreen
-                title="Video"
+                title={activeTitle || "Video"}
               />
             )}
           </div>
@@ -207,13 +203,11 @@ const MediaGallerySection = () => {
       </Dialog>
 
       {/* Image Modal */}
-      <Dialog open={!!activeImage} onOpenChange={() => setActiveImage(null)}>
+      <Dialog open={!!activeImage} onOpenChange={() => { setActiveImage(null); setActiveTitle(null); }}>
         <DialogContent className="max-w-2xl p-2 bg-background border-border">
-          <VisuallyHidden>
-            <DialogTitle>Photo</DialogTitle>
-          </VisuallyHidden>
+          <DialogTitle className="px-2 pt-2 pb-1 text-base font-semibold">{activeTitle || "Photo"}</DialogTitle>
           {activeImage && (
-            <img src={activeImage} alt="Media" className="w-full h-auto rounded-lg" />
+            <img src={activeImage} alt={activeTitle || "Media"} className="w-full h-auto rounded-lg" />
           )}
         </DialogContent>
       </Dialog>
