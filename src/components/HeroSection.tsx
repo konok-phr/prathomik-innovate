@@ -1,6 +1,6 @@
 import { motion, AnimatePresence } from "framer-motion";
 import { ArrowRight, Code2, Sparkles, ChevronDown } from "lucide-react";
-import { useState, useEffect, useCallback } from "react";
+import { useState, useEffect } from "react";
 import ParticleGrid from "./ParticleGrid";
 import CodeTerminal from "./CodeTerminal";
 import { useTheme } from "./ThemeProvider";
@@ -57,34 +57,14 @@ const itemVariants = {
 
 const HeroSection = () => {
   const [textIndex, setTextIndex] = useState(0);
-  const [displayText, setDisplayText] = useState("");
-  const [isDeleting, setIsDeleting] = useState(false);
   const { theme } = useTheme();
 
-  const currentWord = heroTexts[textIndex];
-
   useEffect(() => {
-    let timeout: ReturnType<typeof setTimeout>;
-
-    if (!isDeleting && displayText === currentWord) {
-      // Pause at full word
-      timeout = setTimeout(() => setIsDeleting(true), 2000);
-    } else if (isDeleting && displayText === "") {
-      // Move to next word
-      setIsDeleting(false);
+    const interval = setInterval(() => {
       setTextIndex((prev) => (prev + 1) % heroTexts.length);
-    } else if (isDeleting) {
-      timeout = setTimeout(() => {
-        setDisplayText(currentWord.slice(0, displayText.length - 1));
-      }, 40);
-    } else {
-      timeout = setTimeout(() => {
-        setDisplayText(currentWord.slice(0, displayText.length + 1));
-      }, 80);
-    }
-
-    return () => clearTimeout(timeout);
-  }, [displayText, isDeleting, currentWord]);
+    }, 3000);
+    return () => clearInterval(interval);
+  }, []);
 
   return (
     <section className="relative min-h-screen flex items-center justify-center overflow-hidden pt-32 sm:pt-36">
@@ -161,15 +141,20 @@ const HeroSection = () => {
               <h1 className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-bold tracking-tight mb-2 md:mb-4">
                 <span className="text-foreground">We Build</span>
               </h1>
-              <div className="min-h-[2.6em] sm:min-h-[1.3em] text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-bold relative mb-4 md:mb-6">
-                <span className="text-gradient-cyan" style={{ lineHeight: "1.3" }}>
-                  {displayText}
-                </span>
-                <motion.span
-                  animate={{ opacity: [1, 0] }}
-                  transition={{ duration: 0.5, repeat: Infinity, repeatType: "reverse" }}
-                  className="inline-block w-[3px] h-[0.8em] bg-primary ml-1 align-middle rounded-full"
-                />
+              <div className="h-[1.3em] text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-bold relative mb-4 md:mb-6">
+                <AnimatePresence mode="wait">
+                  <motion.span
+                    key={textIndex}
+                    initial={{ y: 80, opacity: 0, rotateX: -40 }}
+                    animate={{ y: 0, opacity: 1, rotateX: 0 }}
+                    exit={{ y: -80, opacity: 0, rotateX: 40 }}
+                    transition={{ duration: 0.6, ease: [0.25, 0.4, 0.25, 1] }}
+                    className="text-gradient-cyan block absolute inset-0"
+                    style={{ lineHeight: "1.3" }}
+                  >
+                    {heroTexts[textIndex]}
+                  </motion.span>
+                </AnimatePresence>
               </div>
             </motion.div>
 
