@@ -88,6 +88,7 @@ const item = {
 const MediaGallerySection = () => {
   const [activeVideo, setActiveVideo] = useState<string | null>(null);
   const [activeImage, setActiveImage] = useState<string | null>(null);
+  const [activeTitle, setActiveTitle] = useState<string | null>(null);
 
   return (
     <section id="media" className="relative py-20 sm:py-32 overflow-hidden">
