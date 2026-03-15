@@ -1,6 +1,6 @@
 import { motion, AnimatePresence } from "framer-motion";
 import { ArrowRight, Code2, Sparkles, ChevronDown } from "lucide-react";
-import { useState, useEffect } from "react";
+import { useState, useEffect, useCallback } from "react";
 import ParticleGrid from "./ParticleGrid";
 import CodeTerminal from "./CodeTerminal";
 import { useTheme } from "./ThemeProvider";
