@@ -135,12 +135,14 @@ const MediaGallerySection = () => {
               onClick={() => {
                 if (media.type === "video" && media.videoUrl) {
                   setActiveVideo(media.videoUrl);
+                  setActiveTitle(media.title);
                 } else if (media.imageUrl) {
                   setActiveImage(media.imageUrl);
+                  setActiveTitle(media.title);
                 }
               }}
             >
-              <div className={`relative ${media.type === "video" ? "aspect-video" : "aspect-square"} bg-secondary/40 flex items-center justify-center overflow-hidden`}>
+              <div className="relative aspect-[4/3] bg-secondary/40 flex items-center justify-center overflow-hidden">
                 {media.type === "image" && media.imageUrl && (
                   <img
                     src={media.imageUrl}
@@ -153,8 +155,8 @@ const MediaGallerySection = () => {
                   <Film className="w-10 h-10 text-muted-foreground/20" />
                 )}
 
-                {/* Overlay */}
-                <div className="absolute inset-0 bg-gradient-to-t from-background/80 via-background/20 to-transparent" />
+                {/* Hover overlay */}
+                <div className="absolute inset-0 bg-background/0 group-hover:bg-background/30 transition-all duration-300" />
 
                 {/* Play button for videos */}
                 {media.type === "video" && (
@@ -174,11 +176,6 @@ const MediaGallerySection = () => {
                       <ImageIcon className="w-3.5 h-3.5 text-primary" />
                     )}
                   </div>
-                </div>
-
-                {/* Title */}
-                <div className="absolute bottom-2 left-2 right-2 z-10">
-                  <p className="text-xs sm:text-sm font-medium text-foreground truncate">{media.title}</p>
                 </div>
               </div>
             </motion.div>
