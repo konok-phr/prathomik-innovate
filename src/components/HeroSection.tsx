@@ -57,14 +57,34 @@ const itemVariants = {
 
 const HeroSection = () => {
   const [textIndex, setTextIndex] = useState(0);
+  const [displayText, setDisplayText] = useState("");
+  const [isDeleting, setIsDeleting] = useState(false);
   const { theme } = useTheme();
 
+  const currentWord = heroTexts[textIndex];
+
   useEffect(() => {
-    const interval = setInterval(() => {
+    let timeout: ReturnType<typeof setTimeout>;
+
+    if (!isDeleting && displayText === currentWord) {
+      // Pause at full word
+      timeout = setTimeout(() => setIsDeleting(true), 2000);
+    } else if (isDeleting && displayText === "") {
+      // Move to next word
+      setIsDeleting(false);
       setTextIndex((prev) => (prev + 1) % heroTexts.length);
-    }, 3000);
-    return () => clearInterval(interval);
-  }, []);
+    } else if (isDeleting) {
+      timeout = setTimeout(() => {
+        setDisplayText(currentWord.slice(0, displayText.length - 1));
+      }, 40);
+    } else {
+      timeout = setTimeout(() => {
+        setDisplayText(currentWord.slice(0, displayText.length + 1));
+      }, 80);
+    }
+
+    return () => clearTimeout(timeout);
+  }, [displayText, isDeleting, currentWord]);
 
   return (
     <section className="relative min-h-screen flex items-center justify-center overflow-hidden pt-32 sm:pt-36">
