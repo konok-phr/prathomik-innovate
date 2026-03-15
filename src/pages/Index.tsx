@@ -11,9 +11,11 @@ import ClientLogosSection from "@/components/ClientLogosSection";
 import OpenSourceSection from "@/components/OpenSourceSection";
 import TestimonialsSection from "@/components/TestimonialsSection";
 import NewsSection from "@/components/NewsSection";
+import FAQSection from "@/components/FAQSection";
 import ContactSection from "@/components/ContactSection";
 import Footer from "@/components/Footer";
 import SectionDivider from "@/components/SectionDivider";
+import SectionReveal from "@/components/SectionReveal";
 import SEOHead from "@/components/SEOHead";
 import PageTransition from "@/components/PageTransition";
 
@@ -26,26 +28,28 @@ const Index = () => {
       <Navbar />
       <HeroSection />
       <SectionDivider variant="wave" />
-      <TechShowcase />
+      <SectionReveal><TechShowcase /></SectionReveal>
       <SectionDivider variant="gradient" />
-      <StatsSection />
+      <SectionReveal><StatsSection /></SectionReveal>
       <SectionDivider variant="dots" />
-      <ServicesSection />
+      <SectionReveal><ServicesSection /></SectionReveal>
       <SectionDivider variant="wave" flip />
-      <ProductsSection />
+      <SectionReveal><ProductsSection /></SectionReveal>
       <SectionDivider variant="gradient" />
-      <WorkflowSection />
+      <SectionReveal><WorkflowSection /></SectionReveal>
       <SectionDivider variant="dots" />
-      <TeamSection />
+      <SectionReveal><TeamSection /></SectionReveal>
       <SectionDivider variant="wave" />
-      <ClientLogosSection />
+      <SectionReveal><ClientLogosSection /></SectionReveal>
       <SectionDivider variant="gradient" />
-      <OpenSourceSection />
+      <SectionReveal><OpenSourceSection /></SectionReveal>
       <SectionDivider variant="dots" />
-      <TestimonialsSection />
+      <SectionReveal><TestimonialsSection /></SectionReveal>
       <SectionDivider variant="wave" flip />
-      <NewsSection />
+      <SectionReveal><NewsSection /></SectionReveal>
       <SectionDivider variant="gradient" />
+      <SectionReveal><FAQSection /></SectionReveal>
+      <SectionDivider variant="dots" />
       <ContactSection />
       <Footer />
     </div>

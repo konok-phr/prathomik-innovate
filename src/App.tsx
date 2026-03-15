@@ -7,6 +7,8 @@ import { ThemeProvider } from "@/components/ThemeProvider";
 import { lazy, Suspense } from "react";
 import { AnimatePresence } from "framer-motion";
 import BackToTop from "@/components/BackToTop";
+import WhatsAppButton from "@/components/WhatsAppButton";
+import ScrollProgress from "@/components/ScrollProgress";
 import PageLoader from "@/components/PageLoader";
 
 // Eager load the main page for fast initial render
@@ -48,8 +50,10 @@ const App = () => (
         <Toaster />
         <Sonner />
         <BrowserRouter>
+          <ScrollProgress />
           <AnimatedRoutes />
           <BackToTop />
+          <WhatsAppButton />
         </BrowserRouter>
       </TooltipProvider>
     </QueryClientProvider>
