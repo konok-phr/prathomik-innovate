@@ -162,19 +162,14 @@ const HeroSection = () => {
                 <span className="text-foreground">We Build</span>
               </h1>
               <div className="h-[1.3em] text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-bold relative mb-4 md:mb-6">
-                <AnimatePresence mode="wait">
-                  <motion.span
-                    key={textIndex}
-                    initial={{ y: 80, opacity: 0, rotateX: -40 }}
-                    animate={{ y: 0, opacity: 1, rotateX: 0 }}
-                    exit={{ y: -80, opacity: 0, rotateX: 40 }}
-                    transition={{ duration: 0.6, ease: [0.25, 0.4, 0.25, 1] }}
-                    className="text-gradient-cyan block absolute inset-0"
-                    style={{ lineHeight: "1.3" }}
-                  >
-                    {heroTexts[textIndex]}
-                  </motion.span>
-                </AnimatePresence>
+                <span className="text-gradient-cyan" style={{ lineHeight: "1.3" }}>
+                  {displayText}
+                </span>
+                <motion.span
+                  animate={{ opacity: [1, 0] }}
+                  transition={{ duration: 0.5, repeat: Infinity, repeatType: "reverse" }}
+                  className="inline-block w-[3px] h-[0.8em] bg-primary ml-1 align-middle rounded-full"
+                />
               </div>
             </motion.div>
 
