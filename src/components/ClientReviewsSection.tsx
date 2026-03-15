@@ -1,8 +1,7 @@
 import { useState } from "react";
 import { motion } from "framer-motion";
-import { Play, Film, Image as ImageIcon } from "lucide-react";
+import { Play, Film, Image as ImageIcon, ArrowRight } from "lucide-react";
 import { Dialog, DialogContent, DialogTitle } from "@/components/ui/dialog";
-import { VisuallyHidden } from "@radix-ui/react-visually-hidden";
 import FloatingGraphics from "./FloatingGraphics";
 
 type MediaItem = {
@@ -70,6 +69,9 @@ const mediaItems: MediaItem[] = [
   },
 ];
 
+// Show 2 rows: mobile 2 cols = 4, sm 3 cols = 6, lg 4 cols = 8
+const VISIBLE_COUNTS = { mobile: 4, sm: 6, lg: 8 };
+
 const container = {
   hidden: {},
   show: { transition: { staggerChildren: 0.08 } },
@@ -89,6 +91,10 @@ const MediaGallerySection = () => {
   const [activeVideo, setActiveVideo] = useState<string | null>(null);
   const [activeImage, setActiveImage] = useState<string | null>(null);
   const [activeTitle, setActiveTitle] = useState<string | null>(null);
+  const [showAll, setShowAll] = useState(false);
+
+  // Use lg count as max visible for initial render (CSS will hide extras per breakpoint)
+  const visibleItems = showAll ? mediaItems : mediaItems.slice(0, VISIBLE_COUNTS.lg);
 
   return (
     <section id="media" className="relative py-20 sm:py-32 overflow-hidden">
@@ -119,7 +125,7 @@ const MediaGallerySection = () => {
           </p>
         </motion.div>
 
-        {/* Unified Grid */}
+        {/* Grid - 2 rows only */}
         <motion.div
           variants={container}
           initial="hidden"
@@ -127,12 +133,16 @@ const MediaGallerySection = () => {
           viewport={{ once: true }}
           className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-4 sm:gap-5"
         >
-          {mediaItems.map((media) => (
+          {visibleItems.map((media, index) => (
             <motion.div
               key={media.id}
               variants={item}
               whileHover={{ y: -5, transition: { duration: 0.3 } }}
-              className="group glass-card overflow-hidden cursor-pointer hover:border-primary/30 transition-all duration-300 hover:glow-cyan"
+              className={`group glass-card overflow-hidden cursor-pointer hover:border-primary/30 transition-all duration-300 hover:glow-cyan ${
+                !showAll && index >= VISIBLE_COUNTS.mobile ? "hidden sm:block" : ""
+              } ${
+                !showAll && index >= VISIBLE_COUNTS.sm ? "sm:hidden lg:block" : ""
+              }`}
               onClick={() => {
                 if (media.type === "video" && media.videoUrl) {
                   setActiveVideo(media.videoUrl);
@@ -156,10 +166,8 @@ const MediaGallerySection = () => {
                   <Film className="w-10 h-10 text-muted-foreground/20" />
                 )}
 
-                {/* Hover overlay */}
                 <div className="absolute inset-0 bg-background/0 group-hover:bg-background/30 transition-all duration-300" />
 
-                {/* Play button for videos */}
                 {media.type === "video" && (
                   <div className="absolute inset-0 z-20 flex items-center justify-center">
                     <div className="w-12 h-12 rounded-full bg-primary/90 flex items-center justify-center shadow-lg group-hover:shadow-primary/40 group-hover:scale-110 transition-all duration-300">
@@ -168,7 +176,6 @@ const MediaGallerySection = () => {
                   </div>
                 )}
 
-                {/* Type badge */}
                 <div className="absolute top-2 right-2 z-10">
                   <div className="w-7 h-7 rounded-md bg-background/70 backdrop-blur-sm flex items-center justify-center border border-border/50">
                     {media.type === "video" ? (
@@ -182,12 +189,30 @@ const MediaGallerySection = () => {
             </motion.div>
           ))}
         </motion.div>
+
+        {/* View All Media button */}
+        {!showAll && mediaItems.length > VISIBLE_COUNTS.mobile && (
+          <motion.div
+            initial={{ opacity: 0, y: 10 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            className="flex justify-center mt-10"
+          >
+            <button
+              onClick={() => setShowAll(true)}
+              className="group inline-flex items-center gap-2 px-6 py-3 rounded-full border border-primary/30 bg-primary/5 text-primary font-medium text-sm hover:bg-primary/10 hover:border-primary/50 transition-all duration-300"
+            >
+              View All Media
+              <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform duration-300" />
+            </button>
+          </motion.div>
+        )}
       </div>
 
       {/* Video Modal */}
       <Dialog open={!!activeVideo} onOpenChange={() => { setActiveVideo(null); setActiveTitle(null); }}>
-        <DialogContent className="max-w-3xl p-0 overflow-hidden bg-background border-border">
-          <DialogTitle className="px-4 pt-4 pb-2 text-base font-semibold">{activeTitle || "Video"}</DialogTitle>
+        <DialogContent className="w-[95vw] max-w-3xl p-0 overflow-hidden bg-background border-border">
+          <DialogTitle className="px-4 pt-4 pb-2 text-sm sm:text-base font-semibold">{activeTitle || "Video"}</DialogTitle>
           <div className="aspect-video w-full">
             {activeVideo && (
               <iframe
@@ -204,8 +229,8 @@ const MediaGallerySection = () => {
 
       {/* Image Modal */}
       <Dialog open={!!activeImage} onOpenChange={() => { setActiveImage(null); setActiveTitle(null); }}>
-        <DialogContent className="max-w-2xl p-2 bg-background border-border">
-          <DialogTitle className="px-2 pt-2 pb-1 text-base font-semibold">{activeTitle || "Photo"}</DialogTitle>
+        <DialogContent className="w-[95vw] max-w-2xl p-2 bg-background border-border">
+          <DialogTitle className="px-2 pt-2 pb-1 text-sm sm:text-base font-semibold">{activeTitle || "Photo"}</DialogTitle>
           {activeImage && (
             <img src={activeImage} alt={activeTitle || "Media"} className="w-full h-auto rounded-lg" />
           )}
