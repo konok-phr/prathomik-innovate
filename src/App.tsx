@@ -19,6 +19,7 @@ const ProductDetail = lazy(() => import("./pages/ProductDetail.tsx"));
 const NewsDetail = lazy(() => import("./pages/NewsDetail.tsx"));
 const NotFound = lazy(() => import("./pages/NotFound.tsx"));
 const Careers = lazy(() => import("./pages/Careers.tsx"));
+const JobDetail = lazy(() => import("./pages/JobDetail.tsx"));
 const AllTestimonials = lazy(() => import("./pages/AllTestimonials.tsx"));
 const AllNews = lazy(() => import("./pages/AllNews.tsx"));
 const AllMedia = lazy(() => import("./pages/AllMedia.tsx"));
