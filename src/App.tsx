@@ -38,6 +38,7 @@ const AnimatedRoutes = () => {
           <Route path="/news" element={<AllNews />} />
           <Route path="/testimonials" element={<AllTestimonials />} />
           <Route path="/careers" element={<Careers />} />
+          <Route path="/careers/:slug" element={<JobDetail />} />
           <Route path="/media" element={<AllMedia />} />
           <Route path="*" element={<NotFound />} />
         </Routes>
