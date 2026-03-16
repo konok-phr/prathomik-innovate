@@ -1,19 +1,14 @@
 import { motion } from "framer-motion";
 import { Briefcase, ArrowRight, MapPin, Clock, Users, Heart, Zap, Globe, GraduationCap } from "lucide-react";
+import { Link } from "react-router-dom";
 import TopBar from "@/components/TopBar";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 import SEOHead from "@/components/SEOHead";
 import PageTransition from "@/components/PageTransition";
+import { jobOpenings } from "@/data/jobs";
 
-const openings = [
-  { title: "Senior Full-Stack Developer", type: "Full-time", location: "Remote / Dhaka", department: "Engineering" },
-  { title: "Machine Learning Engineer", type: "Full-time", location: "Remote", department: "AI/ML" },
-  { title: "UI/UX Designer", type: "Full-time", location: "Dhaka", department: "Design" },
-  { title: "Flutter Developer", type: "Full-time", location: "Remote / Dhaka", department: "Mobile" },
-  { title: "DevOps Engineer", type: "Full-time", location: "Remote", department: "Infrastructure" },
-  { title: "QA Engineer", type: "Full-time", location: "Dhaka", department: "Quality" },
-];
+const openings = jobOpenings;
 
 const perks = [
   { icon: Globe, title: "Remote Friendly", description: "Work from anywhere in the world with flexible hours." },
