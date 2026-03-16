@@ -1,19 +1,14 @@
 import { motion } from "framer-motion";
 import { Briefcase, ArrowRight, MapPin, Clock, Users, Heart, Zap, Globe, GraduationCap } from "lucide-react";
+import { Link } from "react-router-dom";
 import TopBar from "@/components/TopBar";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 import SEOHead from "@/components/SEOHead";
 import PageTransition from "@/components/PageTransition";
+import { jobOpenings } from "@/data/jobs";
 
-const openings = [
-  { title: "Senior Full-Stack Developer", type: "Full-time", location: "Remote / Dhaka", department: "Engineering" },
-  { title: "Machine Learning Engineer", type: "Full-time", location: "Remote", department: "AI/ML" },
-  { title: "UI/UX Designer", type: "Full-time", location: "Dhaka", department: "Design" },
-  { title: "Flutter Developer", type: "Full-time", location: "Remote / Dhaka", department: "Mobile" },
-  { title: "DevOps Engineer", type: "Full-time", location: "Remote", department: "Infrastructure" },
-  { title: "QA Engineer", type: "Full-time", location: "Dhaka", department: "Quality" },
-];
+const openings = jobOpenings;
 
 const perks = [
   { icon: Globe, title: "Remote Friendly", description: "Work from anywhere in the world with flexible hours." },
@@ -144,32 +139,33 @@ const Careers = () => {
           </motion.p>
           <div className="max-w-3xl mx-auto space-y-4">
             {openings.map((job, i) => (
-              <motion.div
-                key={job.title}
-                initial={{ opacity: 0, x: -20 }}
-                whileInView={{ opacity: 1, x: 0 }}
-                viewport={{ once: true }}
-                transition={{ delay: i * 0.08, duration: 0.4 }}
-                className="group glass-card p-5 sm:p-6 flex items-center justify-between hover:border-primary/30 transition-all duration-300 cursor-pointer"
-              >
-                <div className="flex items-center gap-4">
-                  <div className="w-11 h-11 rounded-lg bg-gradient-cyan-soft flex items-center justify-center shrink-0">
-                    <Briefcase className="w-5 h-5 text-primary" />
-                  </div>
-                  <div>
-                    <h3 className="font-semibold text-foreground">{job.title}</h3>
-                    <div className="flex flex-wrap items-center gap-x-3 gap-y-1 text-xs text-muted-foreground mt-1">
-                      <span className="text-primary/80 font-medium">{job.department}</span>
-                      <span>{job.type}</span>
-                      <span className="flex items-center gap-1">
-                        <MapPin className="w-3 h-3" />
-                        {job.location}
-                      </span>
+              <Link to={`/careers/${job.slug}`} key={job.slug}>
+                <motion.div
+                  initial={{ opacity: 0, x: -20 }}
+                  whileInView={{ opacity: 1, x: 0 }}
+                  viewport={{ once: true }}
+                  transition={{ delay: i * 0.08, duration: 0.4 }}
+                  className="group glass-card p-5 sm:p-6 flex items-center justify-between hover:border-primary/30 transition-all duration-300 cursor-pointer"
+                >
+                  <div className="flex items-center gap-4">
+                    <div className="w-11 h-11 rounded-lg bg-gradient-cyan-soft flex items-center justify-center shrink-0">
+                      <Briefcase className="w-5 h-5 text-primary" />
+                    </div>
+                    <div>
+                      <h3 className="font-semibold text-foreground">{job.title}</h3>
+                      <div className="flex flex-wrap items-center gap-x-3 gap-y-1 text-xs text-muted-foreground mt-1">
+                        <span className="text-primary/80 font-medium">{job.department}</span>
+                        <span>{job.type}</span>
+                        <span className="flex items-center gap-1">
+                          <MapPin className="w-3 h-3" />
+                          {job.location}
+                        </span>
+                      </div>
                     </div>
                   </div>
-                </div>
-                <ArrowRight className="w-5 h-5 text-muted-foreground group-hover:text-primary group-hover:translate-x-1 transition-all shrink-0" />
-              </motion.div>
+                  <ArrowRight className="w-5 h-5 text-muted-foreground group-hover:text-primary group-hover:translate-x-1 transition-all shrink-0" />
+                </motion.div>
+              </Link>
             ))}
           </div>
 
